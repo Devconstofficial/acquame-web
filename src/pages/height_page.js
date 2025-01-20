@@ -7,6 +7,9 @@ import colors from "../colors";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import "@fontsource/roboto";
 import "@fontsource/work-sans";
+import ModalComponent from "../components/add_height_modal";
+import ModalComponent1 from "../components/add_footSize_modal";
+import ModalComponent2 from "../components/add_waist_modal";
 
 const HeightContainer = styled.div`
   display: flex;
@@ -190,6 +193,22 @@ function HeightPage() {
       setCurrentPage2(currentPage2 - 1);
     }
   };
+
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+      
+        const handleOpenModal = () => setIsModalOpen(true);
+        const handleCloseModal = () => setIsModalOpen(false);
+    
+      const [isModalOpen1, setIsModalOpen1] = React.useState(false);
+    
+      const handleOpenModal1 = () => setIsModalOpen1(true);
+      const handleCloseModal1 = () => setIsModalOpen1(false);
+    
+      const [isModalOpen2, setIsModalOpen2] = React.useState(false);
+    
+      const handleOpenModal2 = () => setIsModalOpen2(true);
+      const handleCloseModal2 = () => setIsModalOpen2(false);
+  
   return (
     <HeightContainer>
       <MainContent>
@@ -204,7 +223,7 @@ function HeightPage() {
                 <MetricTitle>180 CM</MetricTitle>
                 <MetricSubText>Height</MetricSubText>
               </MetricBox>
-              <AddButton>Add</AddButton>
+              <AddButton onClick={handleOpenModal}>Add</AddButton>
             </SectionHeader>
             <TableContainer>
               <Table>
@@ -264,7 +283,7 @@ function HeightPage() {
                 <MetricTitle>32 CM</MetricTitle>
                 <MetricSubText>Waist</MetricSubText>
               </MetricBox>
-              <AddButton>Add</AddButton>
+              <AddButton onClick={handleOpenModal2}>Add</AddButton>
             </SectionHeader>
             <TableContainer>
               <Table>
@@ -325,7 +344,7 @@ function HeightPage() {
                 <MetricTitle>30 CM</MetricTitle>
                 <MetricSubText>Foot Size</MetricSubText>
               </MetricBox>
-              <AddButton>Add</AddButton>
+              <AddButton onClick={handleOpenModal1}>Add</AddButton>
             </SectionHeader>
             <TableContainer>
               <Table>
@@ -383,6 +402,9 @@ function HeightPage() {
           </HeightWrapper>
         </ContentWrapper>
       </MainContent>
+      <ModalComponent isOpen={isModalOpen} onClose={handleCloseModal} />
+      <ModalComponent1 isOpen={isModalOpen1} onClose={handleCloseModal1} />
+      <ModalComponent2 isOpen={isModalOpen2} onClose={handleCloseModal2} />
     </HeightContainer>
   );
 }

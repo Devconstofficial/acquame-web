@@ -3,10 +3,8 @@ import styled from "styled-components";
 import "@fontsource/work-sans";
 import "@fontsource/roboto";
 import colors from "../colors";
-import FilterIcon from "../asset/icons/filter_icon.png";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import ModalComponent from "../components/filter_by_modal";
-import ModalComponent1 from "../components/add_transaction_modal";
+import { FaArrowLeft, FaArrowRight, FaChevronDown } from "react-icons/fa";
+import ModalComponent from "../components/add_therapy_note";
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -55,25 +53,6 @@ const AddButton = styled.div`
   font-size: 2rem;
   cursor: pointer;
   color: ${colors.kPrimaryColor};
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 3rem;
-`;
-
-const CancelButton = styled.button`
-  background: none;
-  border: 0.15rem solid ${colors.kPrimaryColor};
-  border-radius: 0.5rem;
-  padding: 0.7rem 1.5rem;
-  font-family: "Work Sans", sans-serif;
-  font-weight: 500;
-  color: ${colors.kPrimaryColor};
-  font-size: 1rem;
-  cursor: pointer;
 `;
 
 const UpdateButton = styled.button`
@@ -126,19 +105,6 @@ const RowContainer = styled.div`
   & > div {
     flex: 1;
   }
-`;
-
-const IconContainer = styled.div`
-  background-color: ${colors.kPrimaryColor};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 3.2rem 1rem 0rem 0rem;
-  border-radius: 0.7rem;
-  max-width: 4rem;
-  max-height: 3rem;
-  width: 3rem;
-  height: 3rem;
 `;
 
 const TableContainer = styled.div`
@@ -204,132 +170,108 @@ const PaginationButton = styled.button`
   color: ${({ color }) => color};
 `;
 
-function TransactionModal({ isOpen, onClose }) {
-  const transactions = [
-    { date: "2025-01-01", type: "Income", category: "Salary", amount: 4000 },
+const SelectWrapper = styled.div`
+  position: relative;
+  width: 97%;
+`;
+
+const SelectField = styled.select`
+  width: 100%;
+  padding: 1rem;
+  padding-right: 2rem;
+  border: 0.15rem solid ${colors.kLoginTextFieldBorderColor};
+  border-radius: 0.5rem;
+  font-family: "Work Sans", sans-serif;
+  font-size: 1rem;
+  background: white;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+    border-color: ${colors.kPrimaryColor};
+  }
+`;
+
+const RichTextArea = styled.textarea`
+  width: 90%;
+  padding: 1rem;
+  border: 0.15rem solid ${colors.kLoginTextFieldBorderColor};
+  border-radius: 0.5rem;
+  font-family: "Work Sans", sans-serif;
+  font-size: 1rem;
+  min-height: 8rem;
+  resize: none;
+
+  &:focus {
+    outline: none;
+    border-color: ${colors.kPrimaryColor};
+  }
+`;
+
+const ArrowIcon = styled(FaChevronDown)`
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: ${colors.kDarkGrayColor}70;
+  pointer-events: none;
+`;
+
+function TherapyNotesModal({ isOpen, onClose }) {
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const therapyNotes = [
     {
-      date: "2025-01-02",
-      type: "Expense",
-      category: "Rent Payment",
-      amount: 1200,
-    },
-    { date: "2025-01-03", type: "Expense", category: "Utilities", amount: 150 },
-    { date: "2025-01-04", type: "Income", category: "Freelance", amount: 500 },
-    {
-      date: "2025-01-05",
-      type: "Expense",
-      category: "Transportation",
-      amount: 80,
-    },
-    { date: "2025-01-06", type: "Expense", category: "Food", amount: 250 },
-    {
-      date: "2025-01-07",
-      type: "Income",
-      category: "Rent Income",
-      amount: 1000,
-    },
-    {
-      date: "2025-01-08",
-      type: "Expense",
-      category: "Entertainment",
-      amount: 50,
-    },
-    { date: "2025-01-09", type: "Expense", category: "Insurance", amount: 300 },
-    { date: "2025-01-10", type: "Expense", category: "Health", amount: 200 },
-    {
-      date: "2025-01-11",
-      type: "Income",
-      category: "Investments",
-      amount: 700,
-    },
-    {
-      date: "2025-01-12",
-      type: "Expense",
-      category: "Restaurants",
-      amount: 120,
-    },
-    {
-      date: "2025-01-13",
-      type: "Income",
-      category: "Side Hustle",
-      amount: 400,
-    },
-    { date: "2025-01-14", type: "Expense", category: "Childcare", amount: 300 },
-    {
-      date: "2025-01-15",
-      type: "Expense",
-      category: "Maintenance",
-      amount: 100,
-    },
-    { date: "2025-01-16", type: "Expense", category: "Medical", amount: 250 },
-    { date: "2025-01-17", type: "Income", category: "Gifts", amount: 200 },
-    {
-      date: "2025-01-18",
-      type: "Expense",
-      category: "Personal Care",
-      amount: 75,
+      summary: "Meditation",
+      date: "January 20, 2025",
+      notes: "This is my meditation notes",
     },
     {
-      date: "2025-01-19",
-      type: "Expense",
-      category: "Miscellaneous",
-      amount: 50,
-    },
-    { date: "2025-01-20", type: "Income", category: "Refunds", amount: 150 },
-    { date: "2025-01-21", type: "Expense", category: "Taxes", amount: 500 },
-    {
-      date: "2025-01-22",
-      type: "Expense",
-      category: "Mortgage Payment",
-      amount: 1500,
-    },
-    { date: "2025-01-23", type: "Income", category: "Salary", amount: 4000 },
-    { date: "2025-01-24", type: "Expense", category: "Condo Fee", amount: 100 },
-    { date: "2025-01-25", type: "Expense", category: "Gas", amount: 60 },
-    {
-      date: "2025-01-26",
-      type: "Income",
-      category: "Investments",
-      amount: 800,
+      summary: "Yoga",
+      date: "February 20, 2024",
+      notes: "This is my yoga notes",
     },
     {
-      date: "2025-01-27",
-      type: "Expense",
-      category: "Travel Expenses",
-      amount: 350,
-    },
-    { date: "2025-01-28", type: "Expense", category: "Utilities", amount: 150 },
-    { date: "2025-01-29", type: "Expense", category: "Health", amount: 100 },
-    { date: "2025-01-30", type: "Income", category: "Freelance", amount: 600 },
-    {
-      date: "2025-01-31",
-      type: "Expense",
-      category: "Restaurants",
-      amount: 80,
+      summary: "Exercise",
+      date: "March 03, 2024",
+      notes: "My new cardio notes",
     },
     {
-      date: "2025-02-01",
-      type: "Expense",
-      category: "Transportation",
-      amount: 60,
+      summary: "Confidence",
+      date: "March 20, 2024",
+      notes: "How to boost your self confidence?",
     },
     {
-      date: "2025-02-02",
-      type: "Income",
-      category: "Rent Income",
-      amount: 1000,
+      summary: "Self Love",
+      date: "October 23, 2024",
+      notes: "Self Love is very important!",
     },
     {
-      date: "2025-02-03",
-      type: "Expense",
-      category: "Entertainment",
-      amount: 40,
+      summary: "Mind Peace",
+      date: "November 20, 2024",
+      notes: "Mind peace is very important for happy life.",
     },
-    { date: "2025-02-04", type: "Expense", category: "Housing", amount: 1100 },
+    {
+      summary: "Be Kind",
+      date: "November 07, 2024",
+      notes: "This is a test note for being kind to others.",
+    },
+    {
+      summary: "Justice",
+      date: "July 07, 2024",
+      notes: "Being Just is important for a balanced life.",
+    },
+    {
+      summary: "Workout",
+      date: "November 20, 2024",
+      notes: "These are notes for workout",
+    },
   ];
   const [currentPage, setCurrentPage] = useState(1);
-  const rowsPerPage = 7;
-  const totalPages = Math.ceil(transactions.length / rowsPerPage);
+  const rowsPerPage = 2;
+  const totalPages = Math.ceil(therapyNotes.length / rowsPerPage);
 
   const handlePageChange = (direction) => {
     if (direction === "next" && currentPage < totalPages) {
@@ -339,19 +281,23 @@ function TransactionModal({ isOpen, onClose }) {
     }
   };
 
-  const displayedRows = transactions.slice(
+  const displayedRows = therapyNotes.slice(
     (currentPage - 1) * rowsPerPage,
     currentPage * rowsPerPage
   );
 
   const [isModalOpen, setIsModalOpen] = React.useState(false);
-
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
-  const [isModalOpen1, setIsModalOpen1] = React.useState(false);
 
-  const handleOpenModal1 = () => setIsModalOpen1(true);
-  const handleCloseModal1 = () => setIsModalOpen1(false);
+  const [selectedNote, setSelectedNote] = useState({
+    summary: "",
+    notes: "",
+  });
+
+  const handleRowClick = (note) => {
+    setSelectedNote(note);
+  };
 
   if (!isOpen) return null;
 
@@ -359,7 +305,7 @@ function TransactionModal({ isOpen, onClose }) {
     <ModalOverlay>
       <ModalContainer>
         <CloseButton onClick={onClose}>&times;</CloseButton>
-        <AddButton onClick={handleOpenModal1}>+</AddButton>
+        <AddButton onClick={handleOpenModal}>+</AddButton>
         <RowContainer>
           <div>
             <Label>From</Label>
@@ -372,13 +318,7 @@ function TransactionModal({ isOpen, onClose }) {
               style={{ width: "70%", marginRight: "0rem" }}
             />
           </div>
-          <IconContainer onClick={handleOpenModal}>
-            <img
-              src={FilterIcon}
-              style={{ width: "1rem", height: "auto" }}
-              alt="icon"
-            />
-          </IconContainer>
+
           <UpdateButton
             style={{
               maxHeight: "3rem",
@@ -389,23 +329,51 @@ function TransactionModal({ isOpen, onClose }) {
             Search
           </UpdateButton>
         </RowContainer>
+        <RowContainer style={{ marginTop: "1rem" }}>
+          <p style={{ fontWeight: "600", marginRight: "0.3rem" }}>Search</p>
+
+          <div>
+            <InputField
+              type="text"
+              placeholder="keyword"
+              style={{ width: "80%" }}
+            />
+          </div>
+          <div>
+            <SelectWrapper>
+              <SelectField
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+              >
+                <option value="" disabled>
+                  Select a category
+                </option>
+                <option value="Summary">Summary</option>
+                <option value="Notes">Notes</option>
+              </SelectField>
+              <ArrowIcon />
+            </SelectWrapper>
+          </div>
+        </RowContainer>
         <TableContainer>
           <Table>
             <thead>
               <tr>
                 <TableHeader first>Date</TableHeader>
-                <TableHeader>Type</TableHeader>
-                <TableHeader>Category</TableHeader>
-                <TableHeader last>Amount</TableHeader>
+                <TableHeader>Summary</TableHeader>
+                <TableHeader last>Notes</TableHeader>
               </tr>
             </thead>
             <tbody>
-              {displayedRows.map((transaction, index) => (
-                <TableRow key={index} isOdd={index % 2 === 0}>
-                  <TableCell>{transaction.date}</TableCell>
-                  <TableCell>{transaction.type}</TableCell>
-                  <TableCell>{transaction.category}</TableCell>
-                  <TableCell>${transaction.amount.toLocaleString()}</TableCell>
+              {displayedRows.map((notes, index) => (
+                <TableRow
+                  key={index}
+                  isOdd={index % 2 === 0}
+                  onClick={() => handleRowClick(notes)}
+                >
+                  <TableCell>{notes.date}</TableCell>
+                  <TableCell>{notes.summary}</TableCell>
+                  <TableCell>{notes.notes}</TableCell>
                 </TableRow>
               ))}
             </tbody>
@@ -436,15 +404,14 @@ function TransactionModal({ isOpen, onClose }) {
             </PaginationBox>
           </Pagination>
         </TableContainer>
-        <ButtonContainer>
-          <CancelButton onClick={onClose}>Sync With Bank</CancelButton>
-          <UpdateButton onClick={onClose}>Add Bank Account</UpdateButton>
-        </ButtonContainer>
+        <Label>Summary</Label>
+        <InputField type="text" placeholder="" value={selectedNote.summary} />
+        <Label>Notes</Label>
+        <RichTextArea placeholder="" value={selectedNote.notes} />
       </ModalContainer>
       <ModalComponent isOpen={isModalOpen} onClose={handleCloseModal} />
-      <ModalComponent1 isOpen={isModalOpen1} onClose={handleCloseModal1} />
     </ModalOverlay>
   );
 }
 
-export default TransactionModal;
+export default TherapyNotesModal;

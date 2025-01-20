@@ -17,6 +17,9 @@ import DrugsAllergy from "../asset/icons/drugs_allergy.png";
 import DeleteIcon from "../asset/icons/delete_icon.png";
 import { FaCalendarAlt } from "react-icons/fa";
 import ModalComponent from "../components/delete_modal";
+import ModalComponent1 from "../components/add_medicine_modal";
+import ModalComponent2 from "../components/add_allergy_modal";
+import ModalComponent3 from "../components/end_medicine_modal";
 
 const MedicalContainer = styled.div`
   display: flex;
@@ -300,6 +303,21 @@ function MedicalInfo() {
       const handleOpenModal = () => setIsModalOpen(true);
       const handleCloseModal = () => setIsModalOpen(false);
 
+  const [isModalOpen3, setIsModalOpen3] = React.useState(false);
+  
+    const handleOpenModal3 = () => setIsModalOpen3(true);
+    const handleCloseModal3 = () => setIsModalOpen3(false);
+  
+    const [isModalOpen1, setIsModalOpen1] = React.useState(false);
+  
+    const handleOpenModal1 = () => setIsModalOpen1(true);
+    const handleCloseModal1 = () => setIsModalOpen1(false);
+  
+    const [isModalOpen2, setIsModalOpen2] = React.useState(false);
+  
+    const handleOpenModal2 = () => setIsModalOpen2(true);
+    const handleCloseModal2 = () => setIsModalOpen2(false);
+
   return (
     <MedicalContainer>
       <MainContent>
@@ -312,7 +330,7 @@ function MedicalInfo() {
             <SectionWrapper>
               <SectionHeader>
                 <SectionTitle>Medication Taking</SectionTitle>
-                <AddButton>+ Add</AddButton>
+                <AddButton onClick={handleOpenModal1}>+ Add</AddButton>
               </SectionHeader>
               <ListContainer>
                 {medications.map((med, index) => (
@@ -352,7 +370,7 @@ function MedicalInfo() {
                         <FaCalendarAlt/>
                         12/30
                       </DateContainer>
-                      <ActionContainer>
+                      <ActionContainer onClick={handleOpenModal3}>
                         <ActionCircle
                           bgColor={colors.kPrimaryColor}
                           textColor={colors.kWhiteColor}
@@ -456,7 +474,7 @@ function MedicalInfo() {
             <SectionWrapper>
               <SectionHeader>
                 <SectionTitle>Allergy Information</SectionTitle>
-                <AddButton>+ Add</AddButton>
+                <AddButton onClick={handleOpenModal2}>+ Add</AddButton>
               </SectionHeader>
               <ListContainer>
                 {allergies.map((allergy, index) => (
@@ -532,6 +550,9 @@ function MedicalInfo() {
         </ContentWrapper>
       </MainContent>
       <ModalComponent isOpen={isModalOpen} onClose={handleCloseModal} />
+      <ModalComponent1 isOpen={isModalOpen1} onClose={handleCloseModal1} />
+      <ModalComponent2 isOpen={isModalOpen2} onClose={handleCloseModal2} />
+      <ModalComponent3 isOpen={isModalOpen3} onClose={handleCloseModal3} />
     </MedicalContainer>
   );
 }

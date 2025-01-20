@@ -3,10 +3,8 @@ import styled from "styled-components";
 import "@fontsource/work-sans";
 import "@fontsource/roboto";
 import colors from "../colors";
-import FilterIcon from "../asset/icons/filter_icon.png";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import ModalComponent from "../components/filter_by_modal";
-import ModalComponent1 from "../components/add_transaction_modal";
+import ModalComponent from "../components/assessment_modal";
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -55,25 +53,6 @@ const AddButton = styled.div`
   font-size: 2rem;
   cursor: pointer;
   color: ${colors.kPrimaryColor};
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 3rem;
-`;
-
-const CancelButton = styled.button`
-  background: none;
-  border: 0.15rem solid ${colors.kPrimaryColor};
-  border-radius: 0.5rem;
-  padding: 0.7rem 1.5rem;
-  font-family: "Work Sans", sans-serif;
-  font-weight: 500;
-  color: ${colors.kPrimaryColor};
-  font-size: 1rem;
-  cursor: pointer;
 `;
 
 const UpdateButton = styled.button`
@@ -126,19 +105,6 @@ const RowContainer = styled.div`
   & > div {
     flex: 1;
   }
-`;
-
-const IconContainer = styled.div`
-  background-color: ${colors.kPrimaryColor};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 3.2rem 1rem 0rem 0rem;
-  border-radius: 0.7rem;
-  max-width: 4rem;
-  max-height: 3rem;
-  width: 3rem;
-  height: 3rem;
 `;
 
 const TableContainer = styled.div`
@@ -204,132 +170,28 @@ const PaginationButton = styled.button`
   color: ${({ color }) => color};
 `;
 
-function TransactionModal({ isOpen, onClose }) {
-  const transactions = [
-    { date: "2025-01-01", type: "Income", category: "Salary", amount: 4000 },
-    {
-      date: "2025-01-02",
-      type: "Expense",
-      category: "Rent Payment",
-      amount: 1200,
-    },
-    { date: "2025-01-03", type: "Expense", category: "Utilities", amount: 150 },
-    { date: "2025-01-04", type: "Income", category: "Freelance", amount: 500 },
-    {
-      date: "2025-01-05",
-      type: "Expense",
-      category: "Transportation",
-      amount: 80,
-    },
-    { date: "2025-01-06", type: "Expense", category: "Food", amount: 250 },
-    {
-      date: "2025-01-07",
-      type: "Income",
-      category: "Rent Income",
-      amount: 1000,
-    },
-    {
-      date: "2025-01-08",
-      type: "Expense",
-      category: "Entertainment",
-      amount: 50,
-    },
-    { date: "2025-01-09", type: "Expense", category: "Insurance", amount: 300 },
-    { date: "2025-01-10", type: "Expense", category: "Health", amount: 200 },
-    {
-      date: "2025-01-11",
-      type: "Income",
-      category: "Investments",
-      amount: 700,
-    },
-    {
-      date: "2025-01-12",
-      type: "Expense",
-      category: "Restaurants",
-      amount: 120,
-    },
-    {
-      date: "2025-01-13",
-      type: "Income",
-      category: "Side Hustle",
-      amount: 400,
-    },
-    { date: "2025-01-14", type: "Expense", category: "Childcare", amount: 300 },
-    {
-      date: "2025-01-15",
-      type: "Expense",
-      category: "Maintenance",
-      amount: 100,
-    },
-    { date: "2025-01-16", type: "Expense", category: "Medical", amount: 250 },
-    { date: "2025-01-17", type: "Income", category: "Gifts", amount: 200 },
-    {
-      date: "2025-01-18",
-      type: "Expense",
-      category: "Personal Care",
-      amount: 75,
-    },
-    {
-      date: "2025-01-19",
-      type: "Expense",
-      category: "Miscellaneous",
-      amount: 50,
-    },
-    { date: "2025-01-20", type: "Income", category: "Refunds", amount: 150 },
-    { date: "2025-01-21", type: "Expense", category: "Taxes", amount: 500 },
-    {
-      date: "2025-01-22",
-      type: "Expense",
-      category: "Mortgage Payment",
-      amount: 1500,
-    },
-    { date: "2025-01-23", type: "Income", category: "Salary", amount: 4000 },
-    { date: "2025-01-24", type: "Expense", category: "Condo Fee", amount: 100 },
-    { date: "2025-01-25", type: "Expense", category: "Gas", amount: 60 },
-    {
-      date: "2025-01-26",
-      type: "Income",
-      category: "Investments",
-      amount: 800,
-    },
-    {
-      date: "2025-01-27",
-      type: "Expense",
-      category: "Travel Expenses",
-      amount: 350,
-    },
-    { date: "2025-01-28", type: "Expense", category: "Utilities", amount: 150 },
-    { date: "2025-01-29", type: "Expense", category: "Health", amount: 100 },
-    { date: "2025-01-30", type: "Income", category: "Freelance", amount: 600 },
-    {
-      date: "2025-01-31",
-      type: "Expense",
-      category: "Restaurants",
-      amount: 80,
-    },
-    {
-      date: "2025-02-01",
-      type: "Expense",
-      category: "Transportation",
-      amount: 60,
-    },
-    {
-      date: "2025-02-02",
-      type: "Income",
-      category: "Rent Income",
-      amount: 1000,
-    },
-    {
-      date: "2025-02-03",
-      type: "Expense",
-      category: "Entertainment",
-      amount: 40,
-    },
-    { date: "2025-02-04", type: "Expense", category: "Housing", amount: 1100 },
+const DescriptionText = styled.p`
+  font-size: 1rem;
+  font-weight: 700;
+  color: ${colors.kBlackColor};
+`;
+
+function AnxietyCheckModal({ isOpen, onClose }) {
+  const anxietyCheck = [
+    { date: "January 20, 2025", score: 18 },
+    { date: "February 20, 2024", score: 13 },
+    { date: "March 03, 2024", score: 20 },
+    { date: "March 20, 2024", score: 7 },
+    { date: "October 23, 2024", score: 11 },
+    { date: "November 20, 2024", score: 19 },
+    { date: "November 07, 2024", score: 21 },
+    { date: "July 07, 2024", score: 17 },
+    { date: "November 20, 2024", score: 9 },
   ];
+
   const [currentPage, setCurrentPage] = useState(1);
-  const rowsPerPage = 7;
-  const totalPages = Math.ceil(transactions.length / rowsPerPage);
+  const rowsPerPage = 2;
+  const totalPages = Math.ceil(anxietyCheck.length / rowsPerPage);
 
   const handlePageChange = (direction) => {
     if (direction === "next" && currentPage < totalPages) {
@@ -339,19 +201,14 @@ function TransactionModal({ isOpen, onClose }) {
     }
   };
 
-  const displayedRows = transactions.slice(
+  const displayedRows = anxietyCheck.slice(
     (currentPage - 1) * rowsPerPage,
     currentPage * rowsPerPage
   );
 
   const [isModalOpen, setIsModalOpen] = React.useState(false);
-
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
-  const [isModalOpen1, setIsModalOpen1] = React.useState(false);
-
-  const handleOpenModal1 = () => setIsModalOpen1(true);
-  const handleCloseModal1 = () => setIsModalOpen1(false);
 
   if (!isOpen) return null;
 
@@ -359,7 +216,7 @@ function TransactionModal({ isOpen, onClose }) {
     <ModalOverlay>
       <ModalContainer>
         <CloseButton onClick={onClose}>&times;</CloseButton>
-        <AddButton onClick={handleOpenModal1}>+</AddButton>
+        <AddButton onClick={handleOpenModal}>+</AddButton>
         <RowContainer>
           <div>
             <Label>From</Label>
@@ -372,13 +229,7 @@ function TransactionModal({ isOpen, onClose }) {
               style={{ width: "70%", marginRight: "0rem" }}
             />
           </div>
-          <IconContainer onClick={handleOpenModal}>
-            <img
-              src={FilterIcon}
-              style={{ width: "1rem", height: "auto" }}
-              alt="icon"
-            />
-          </IconContainer>
+
           <UpdateButton
             style={{
               maxHeight: "3rem",
@@ -389,23 +240,20 @@ function TransactionModal({ isOpen, onClose }) {
             Search
           </UpdateButton>
         </RowContainer>
+
         <TableContainer>
           <Table>
             <thead>
               <tr>
                 <TableHeader first>Date</TableHeader>
-                <TableHeader>Type</TableHeader>
-                <TableHeader>Category</TableHeader>
-                <TableHeader last>Amount</TableHeader>
+                <TableHeader last>Journal</TableHeader>
               </tr>
             </thead>
             <tbody>
-              {displayedRows.map((transaction, index) => (
+              {displayedRows.map((notes, index) => (
                 <TableRow key={index} isOdd={index % 2 === 0}>
-                  <TableCell>{transaction.date}</TableCell>
-                  <TableCell>{transaction.type}</TableCell>
-                  <TableCell>{transaction.category}</TableCell>
-                  <TableCell>${transaction.amount.toLocaleString()}</TableCell>
+                  <TableCell>{notes.date}</TableCell>
+                  <TableCell>{notes.score.toLocaleString()}</TableCell>
                 </TableRow>
               ))}
             </tbody>
@@ -436,15 +284,28 @@ function TransactionModal({ isOpen, onClose }) {
             </PaginationBox>
           </Pagination>
         </TableContainer>
-        <ButtonContainer>
-          <CancelButton onClick={onClose}>Sync With Bank</CancelButton>
-          <UpdateButton onClick={onClose}>Add Bank Account</UpdateButton>
-        </ButtonContainer>
+        <DescriptionText>
+          What your total score means
+          <br />
+          Your total score is a guide to how severe your anxiety disorder may
+          be:
+          <br />
+          0 to 4 = mild anxiety
+          <br />
+          5 to 9 = moderate anxiety
+          <br />
+          10 to 14 = moderately severe anxiety
+          <br />
+          15 to 21 = severe anxiety
+          <br />
+          If your score is 10 or higher, or if you feel that anxiety is
+          affecting your daily life, call your doctor.
+          <br />
+        </DescriptionText>
       </ModalContainer>
       <ModalComponent isOpen={isModalOpen} onClose={handleCloseModal} />
-      <ModalComponent1 isOpen={isModalOpen1} onClose={handleCloseModal1} />
     </ModalOverlay>
   );
 }
 
-export default TransactionModal;
+export default AnxietyCheckModal;

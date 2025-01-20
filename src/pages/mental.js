@@ -3,7 +3,6 @@ import styled from "styled-components";
 import SideBar from "../components/sidebar";
 import Header from "../components/header";
 import { media } from "../responsive";
-// import { useNavigate } from "react-router-dom";
 import colors from "../colors";
 import userImage from "../asset/images/user_profile.png";
 import "@fontsource/roboto";
@@ -25,6 +24,13 @@ import Plan from "../asset/icons/plan_week.png";
 import Other from "../asset/icons/resources.png";
 import InsightBanner from "../asset/images/reduce_stress_banner.png";
 import ModalComponent from "../components/view_details_modal";
+import GenerateInsightsModal from "../components/generate_insight_modal";
+import MoodHistoryModal from "../components/mood_history_modal";
+import TherapyModal from "../components/therapy_note_modal";
+import JournalModal from "../components/journal_modal";
+import AnxietyCheckMod from "../components/anxiety_check_modal";
+import ChallengeModal from "../components/challenge_unhelpful_through_modal";
+import RelaxationExerciseModal from "../components/relaxation_exercise_modal";
 
 const MentalContainer = styled.div`
   display: flex;
@@ -313,14 +319,40 @@ function MentalPage() {
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
 
-  // const handleIncomeClick = () => {
-  //   navigate("/asset-screen");
-  // };
+  const [isModalOpen1, setIsModalOpen1] = React.useState(false);
 
-  // const handleAssetClick = () => {
-  //   navigate("/asset-screen");
-  // };
+  const handleOpenModal1 = () => setIsModalOpen1(true);
+  const handleCloseModal1 = () => setIsModalOpen1(false);
 
+  const [isModalOpen2, setIsModalOpen2] = React.useState(false);
+
+  const handleOpenModal2 = () => setIsModalOpen2(true);
+  const handleCloseModal2 = () => setIsModalOpen2(false);
+
+  const [isModalOpen3, setIsModalOpen3] = React.useState(false);
+
+  const handleOpenModal3 = () => setIsModalOpen3(true);
+  const handleCloseModal3 = () => setIsModalOpen3(false);
+
+  const [isModalOpen4, setIsModalOpen4] = React.useState(false);
+
+  const handleOpenModal4 = () => setIsModalOpen4(true);
+  const handleCloseModal4 = () => setIsModalOpen4(false);
+
+  const [isModalOpen5, setIsModalOpen5] = React.useState(false);
+
+  const handleOpenModal5 = () => setIsModalOpen5(true);
+  const handleCloseModal5 = () => setIsModalOpen5(false);
+
+  const [isModalOpen6, setIsModalOpen6] = React.useState(false);
+
+  const handleOpenModal6 = () => setIsModalOpen6(true);
+  const handleCloseModal6 = () => setIsModalOpen6(false);
+
+  const [isModalOpen7, setIsModalOpen7] = React.useState(false);
+
+  const handleOpenModal7 = () => setIsModalOpen7(true);
+  const handleCloseModal7 = () => setIsModalOpen7(false);
   return (
     <MentalContainer>
       <MainContent>
@@ -370,30 +402,30 @@ function MentalPage() {
                       </IconTitlecontainer>
                     </IconItem>
                   </IconRow>
-                  <ViewGoalsButton>View Goals</ViewGoalsButton>
+                  <ViewGoalsButton onClick={handleOpenModal2}>View History</ViewGoalsButton>
                 </BannerText>
                 <BannerImage src={MentalBanner} alt="financial Banner" />
               </Banner>
               <BoxRow>
-                <Box bgColor={colors.kPurpleShade2}>
+                <Box bgColor={colors.kPurpleShade2} onClick={handleOpenModal5}>
                   <BoxImage src={AnxietyCheck} alt="Anxiety" />
                   <BoxText>Anxiety Check</BoxText>
                 </Box>
-                <Box bgColor={colors.kDarkPinkColor}>
+                <Box bgColor={colors.kDarkPinkColor} onClick={handleOpenModal7}>
                   <BoxImage src={Relaxation} alt="Relaxation" />
                   <BoxText>Relaxation Exercise</BoxText>
                 </Box>
-                <Box bgColor={colors.kPurpleColor}>
+                <Box bgColor={colors.kPurpleColor} onClick={handleOpenModal4}>
                   <BoxImage src={Journal} alt="Journal" />
                   <BoxText>Journal</BoxText>
                 </Box>
               </BoxRow>
               <BoxRow>
-                <Box bgColor={colors.kGreenColor}>
+                <Box bgColor={colors.kGreenColor} onClick={handleOpenModal3}>
                   <BoxImage src={Therapy} alt="Therapy" />
                   <BoxText>Therapy Notes</BoxText>
                 </Box>
-                <Box bgColor={colors.kChallengeColor}>
+                <Box bgColor={colors.kChallengeColor} onClick={handleOpenModal6}>
                   <BoxImage src={Challenge} alt="Challenge" />
                   <BoxText>Challenge unhelpful thoughts </BoxText>
                 </Box>
@@ -435,7 +467,7 @@ function MentalPage() {
                   </ViewDetailsButton>
                 </InsightsCard>
               </InsightsWrapper>
-              <ToggleButton>
+              <ToggleButton onClick={handleOpenModal1}>
                   Generate Insights
                 </ToggleButton>
             </RightColumn>
@@ -443,6 +475,13 @@ function MentalPage() {
         </ContentWrapper>
       </MainContent>
       <ModalComponent isOpen={isModalOpen} onClose={handleCloseModal} />
+      <GenerateInsightsModal isOpen={isModalOpen1} onClose={handleCloseModal1}/>
+      <MoodHistoryModal isOpen={isModalOpen2} onClose={handleCloseModal2}/>
+      <TherapyModal isOpen={isModalOpen3} onClose={handleCloseModal3}/>
+      <JournalModal isOpen={isModalOpen4} onClose={handleCloseModal4}/>
+      <AnxietyCheckMod isOpen={isModalOpen5} onClose={handleCloseModal5}/>
+      <ChallengeModal isOpen={isModalOpen6} onClose={handleCloseModal6}/>
+      <RelaxationExerciseModal isOpen={isModalOpen7} onClose={handleCloseModal7}/>
     </MentalContainer>
   );
 }

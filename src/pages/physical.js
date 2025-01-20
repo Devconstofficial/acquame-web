@@ -17,6 +17,8 @@ import "@fontsource/roboto";
 import "@fontsource/lato";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import ModalComponent from "../components/physical_goal_modal";
+import ModalComponent1 from "../components/add_activity_modal";
 
 const PhysicalContainer = styled.div`
   display: flex;
@@ -307,20 +309,36 @@ const UserHandle = styled.p`
   color: ${colors.kHandleColor};
 `;
 
-const Subheadings1 = styled.h4`
-  font-size: 1.2rem;
-  font-family: "Lato", sans-serif;
-  font-weight: bold;
+const SectionHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+`;
+
+const SectionTitle = styled.h4`
+  margin: 0;
   color: ${colors.kBlackColor};
-  align-self: flex-start;
-  margin: 0 0 1rem 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2rem;
+`;
+
+const AddButton = styled.button`
+  border: 1px solid ${colors.kPrimaryColor};
+  background-color: ${colors.kPrimaryColor}30;
+  color: ${colors.kPrimaryColor};
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-family: "Roboto", sans-serif;
+  cursor: pointer;
+  margin-left: 12rem;
 `;
 
 const CalendarWrapper = styled.div`
   border: 1px solid ${colors.kStrokeColor}67;
   border-radius: 0.5rem;
   padding: 1rem;
-  margin:0rem 2rem 0rem 1rem;
+  margin: 0rem 2rem 0rem 1rem;
   width: 90%;
 `;
 
@@ -386,7 +404,6 @@ const DateCircle = styled.div`
   font-family: "Lato", sans-serif;
 `;
 
-
 function PhysicalPage() {
   const highlightedDates = [7, 8, 10];
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -427,16 +444,26 @@ function PhysicalPage() {
 
   const navigate = useNavigate();
   const handleWeightHistoryClick = () => {
-    navigate('/weight-screen');
+    navigate("/weight-screen");
   };
 
   const handleHeightHistoryClick = () => {
-    navigate('/height-screen');
+    navigate("/height-screen");
   };
 
   const handleMedicalHistoryClick = () => {
-    navigate('/medical-screen');
+    navigate("/medical-screen");
   };
+
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+
+  const handleOpenModal = () => setIsModalOpen(true);
+  const handleCloseModal = () => setIsModalOpen(false);
+
+  const [isModalOpen1, setIsModalOpen1] = React.useState(false);
+
+  const handleOpenModal1 = () => setIsModalOpen1(true);
+  const handleCloseModal1 = () => setIsModalOpen1(false);
 
   return (
     <PhysicalContainer>
@@ -467,14 +494,19 @@ function PhysicalPage() {
                       </SliderValue>
                     </StyledSliderContainer>
                   </SliderContainer>
-                  <ViewGoalsButton>View Goals</ViewGoalsButton>
+                  <ViewGoalsButton onClick={handleOpenModal}>
+                    View Goals
+                  </ViewGoalsButton>
                 </BannerText>
                 <BannerImage src={PhysicalBannerImage} alt="Health Banner" />
               </Banner>
 
               <Subheadings>Basic Health Metrics</Subheadings>
               <MetricContainer>
-                <MetricBox color={colors.kDarkPinkColor} onClick={handleWeightHistoryClick}>
+                <MetricBox
+                  color={colors.kDarkPinkColor}
+                  onClick={handleWeightHistoryClick}
+                >
                   <MetricTitle>150 Lbs</MetricTitle>
                   <MetricSubText>Weight</MetricSubText>
                   <MetricSubText>BMI</MetricSubText>
@@ -482,7 +514,10 @@ function PhysicalPage() {
                     <MetricIcon src={weightIcon} alt="Weight" />
                   </MetricIconWrapper>
                 </MetricBox>
-                <MetricBox color={colors.kPurpleShade2}  onClick={handleHeightHistoryClick}>
+                <MetricBox
+                  color={colors.kPurpleShade2}
+                  onClick={handleHeightHistoryClick}
+                >
                   <MetricTitle>180 CM</MetricTitle>
                   <MetricSubText>Height</MetricSubText>
                   <MetricSubText>Waist</MetricSubText>
@@ -490,7 +525,10 @@ function PhysicalPage() {
                     <MetricIcon src={heightIcon} alt="Height" />
                   </MetricIconWrapper>
                 </MetricBox>
-                <MetricBox color={colors.kPurpleColor}  onClick={handleMedicalHistoryClick}>
+                <MetricBox
+                  color={colors.kPurpleColor}
+                  onClick={handleMedicalHistoryClick}
+                >
                   <MetricTitle>Medical Info</MetricTitle>
                   <MetricSubText>Height</MetricSubText>
                   <MetricSubText>Waist</MetricSubText>
@@ -546,7 +584,11 @@ function PhysicalPage() {
                 <UserName>Sophie Fortune</UserName>
                 <UserHandle>@sophiefortune</UserHandle>
               </UserInfo>
-              <Subheadings1>Activities Log</Subheadings1>
+              <SectionHeader>
+                <SectionTitle>Medication Taking</SectionTitle>
+                <AddButton onClick={handleOpenModal1}>+ Add</AddButton>
+              </SectionHeader>
+
               <CalendarWrapper>
                 <CalendarHeader>
                   <ArrowButton onClick={goToPreviousMonth}>
@@ -585,6 +627,8 @@ function PhysicalPage() {
           </PhysicalWrapper>
         </ContentWrapper>
       </MainContent>
+      <ModalComponent isOpen={isModalOpen} onClose={handleCloseModal} />
+      <ModalComponent1 isOpen={isModalOpen1} onClose={handleCloseModal1} />
     </PhysicalContainer>
   );
 }
