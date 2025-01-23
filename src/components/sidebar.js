@@ -14,15 +14,17 @@ import "@fontsource/poppins";
 import "@fontsource/lato";
 import { media } from "../responsive";
 
+let height = window.innerHeight
+console.log(height)
 const SideBarContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 17vw;
-  height: 100vh;
+  height: ${height}px;
   background-color: ${colors.kPrimaryColor};
   color: ${colors.kWhiteColor};
   font-family: "Lato", sans-serif;
-  position: relative;
+  position: sticky;
 
   ${media.extraSmall`display: none;`}
   ${media.mobile`display: none;`}
@@ -97,7 +99,7 @@ const MenuItem = styled.li`
   padding: 1rem 1.5rem;
   margin: 0 1rem;
   cursor: pointer;
-  font-size: 1.3rem;
+  font-size: 1rem;
   background-color: ${(props) =>
     props.isSelected ? `${colors.kBlackColor}50` : "transparent"};
   font-family: "Lato", sans-serif;
@@ -131,10 +133,11 @@ const LogoutWrapper = styled.div`
   margin-top: auto;
 `;
 
-function SideBar() {
+function SideBar({ isCollapsed, toggleSidebar }) {
   const navigate = useNavigate();
   const location = useLocation();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  console.log(location)
+  const [isMenuOpen, setIsMenuOpen] = useState(isCollapsed);
 
   const menuItems = [
     { name: "Home", icon: homeIcon, route: "/home" },
@@ -172,10 +175,14 @@ function SideBar() {
   return (
     <>
       <HamburgerMenu>
-        <Logo src={logoImage} alt="Logo" />
+        {
+          isCollapsed ? 
+        <Logo src={logoImage} alt="Logo" /> : null
+        }
         <HamburgerIcon
           src={hamMenuImage}
           alt="Menu"
+          style={{width:20,height:20}}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         />
       </HamburgerMenu>

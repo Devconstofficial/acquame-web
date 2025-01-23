@@ -20,6 +20,8 @@ import { useNavigate } from "react-router-dom";
 import ModalComponent from "../components/physical_goal_modal";
 import ModalComponent1 from "../components/add_activity_modal";
 
+
+
 const PhysicalContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -76,7 +78,7 @@ const BannerText = styled.div`
 `;
 
 const BannerTitle = styled.h2`
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   margin-bottom: 0.5rem;
   font-weight: 600;
 `;
@@ -131,7 +133,7 @@ const SliderValue = styled.div`
   top: 1.5rem;
   left: ${({ value, max }) => `calc(${(value / max) * 100}% - 1rem)`};
   color: white;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: bold;
 `;
 
@@ -141,7 +143,7 @@ const ViewGoalsButton = styled.button`
   border: none;
   border-radius: 0.5rem;
   padding: 0.7rem 1.7rem;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: normal;
   margin-top: 2rem;
   cursor: pointer;
@@ -162,7 +164,7 @@ const SliderContainer = styled.div`
 `;
 
 const Subheadings = styled.h4`
-  font-size: 1.3rem;
+  font-size: 1rem;
   margin: 2.5rem 0rem 0rem 0rem;
   font-weight: 600;
   font-family: "Roboto", sans-serif;
@@ -174,7 +176,7 @@ const MetricContainer = styled.div`
 `;
 
 const MetricTitle = styled.p`
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: bold;
   font-family: "Roboto", sans-serif;
   color: ${colors.kWhiteColor};
@@ -196,7 +198,7 @@ const MetricBox = styled.div`
 `;
 
 const MetricSubText = styled.p`
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: ${colors.kWhiteColor}70;
 `;
 
@@ -260,18 +262,18 @@ const TipText = styled.p`
   color: ${colors.kWhiteColor};
   font-family: "Roboto", sans-serif;
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 1rem;
   margin: 0;
 `;
 
 const TipDetails = styled.p`
   color: white;
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   margin: 0.5rem 0 0;
 `;
 
 const TipIcon = styled.img`
-  width: 1.5rem;
+  width: 1rem;
   height: auto;
 `;
 
@@ -282,6 +284,9 @@ const RightColumn = styled.div`
   padding: 1rem;
   background-color: ${colors.kWhiteColor};
   border-left: 1px solid ${colors.kStrokeColor1};
+   @media (max-width: 768px) {
+  display:none;
+  }
 `;
 
 const UserInfo = styled.div`
@@ -297,14 +302,14 @@ const UserImage = styled.img`
 `;
 
 const UserName = styled.h3`
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   margin: 0;
   font-family: "Lato", sans-serif;
   color: ${colors.kBlackColor};
 `;
 
 const UserHandle = styled.p`
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-family: "Lato", sans-serif;
   color: ${colors.kHandleColor};
 `;
@@ -320,7 +325,7 @@ const SectionTitle = styled.h4`
   margin: 0;
   color: ${colors.kBlackColor};
   font-family: "Roboto", sans-serif;
-  font-size: 1.2rem;
+  font-size: 1rem;
 `;
 
 const AddButton = styled.button`
@@ -353,7 +358,7 @@ const ArrowButton = styled.button`
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: ${colors.kBlackColor};
   &:hover {
     color: ${colors.kPrimaryColor};
@@ -361,7 +366,7 @@ const ArrowButton = styled.button`
 `;
 
 const MonthTitle = styled.div`
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: bold;
   text-align: center;
   color: ${colors.kBlackColor};
@@ -375,7 +380,7 @@ const DaysRow = styled.div`
 `;
 
 const Day = styled.div`
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-family: "Lato", sans-serif;
   font-weight: bold;
   text-align: center;
@@ -389,8 +394,8 @@ const Calendar = styled.div`
 `;
 
 const DateCircle = styled.div`
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
   background-color: ${({ isToday }) =>
     isToday ? `${colors.kPrimaryColor}` : "transparent"};
@@ -468,11 +473,11 @@ function PhysicalPage() {
   return (
     <PhysicalContainer>
       <MainContent>
-        <SidebarWrapper>
+        {/* <SidebarWrapper>
           <SideBar />
-        </SidebarWrapper>
+        </SidebarWrapper> */}
         <ContentWrapper>
-          <Header />
+          {/* <Header /> */}
           <PhysicalWrapper>
             <LeftColumn>
               <Banner>
@@ -540,7 +545,7 @@ function PhysicalPage() {
 
               <Subheadings>Health Tips and Goals</Subheadings>
               <TipsContainer>
-                <TipBox color={colors.kPurpleShade3}>
+                <TipBox color={colors.kPurpleShade3} style={{margin:10}}>
                   <TipRow>
                     <TipIconWrapper>
                       <TipIcon src={stepIcon} alt="Steps" />
@@ -552,7 +557,7 @@ function PhysicalPage() {
                     cucumber for extra flavor.
                   </TipDetails>
                 </TipBox>
-                <TipBox color={colors.kBlueShade1}>
+                <TipBox color={colors.kBlueShade1} style={{margin:10}}>
                   <TipRow>
                     <TipIconWrapper>
                       <TipIcon src={stableWeightIcon} alt="Weight Range" />
@@ -564,7 +569,7 @@ function PhysicalPage() {
                     cucumber for extra flavor.
                   </TipDetails>
                 </TipBox>
-                <TipBox color={colors.kBlueShade2}>
+                <TipBox color={colors.kBlueShade2} style={{margin:10}}>
                   <TipRow>
                     <TipIconWrapper>
                       <TipIcon src={hydrationIcon} alt="Hydration" />

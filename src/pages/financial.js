@@ -32,6 +32,7 @@ const FinancialContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
+  width:100%;
   background-color: ${colors.kWhiteColor};
 `;
 
@@ -58,10 +59,11 @@ const FinancialWrapper = styled.div`
   gap: 2rem;
   padding: 1rem;
 
-  ${media.extraSmall`
-    flex-direction: column;
-    gap: 1rem;
-  `}
+  @media (max-width: 768px) {
+  flex-direction: column;
+  margin-top:1rem;
+  flex:1;
+  }
 `;
 
 const LeftColumn = styled.div`
@@ -76,9 +78,9 @@ const RightColumn = styled.div`
   background-color: ${colors.kWhiteColor};
   border-left: 1px solid ${colors.kStrokeColor1};
 
-  ${media.extraSmall`
-    display: none;
-  `}
+  @media (max-width: 768px) {
+  display:none;
+  }
 `;
 
 const UserInfo = styled.div`
@@ -94,7 +96,7 @@ const UserImage = styled.img`
 `;
 
 const UserName = styled.h3`
-  font-size: 1.4rem;
+  font-size: 1rem;
   margin: 0;
   font-family: "Lato", sans-serif;
   color: ${colors.kBlackColor};
@@ -107,7 +109,7 @@ const UserHandle = styled.p`
 `;
 
 const SectionTitle = styled.p`
-  font-size: 1.4rem;
+  font-size: 1rem;
   font-weight: 500;
   margin-bottom: 1rem;
   color: ${colors.kBlackColor};
@@ -138,7 +140,6 @@ const ActivityIconWrapper = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 20%;
-  margin-right: 1rem;
   background-color: ${(props) => props.bgColor || "#ccc"};
 `;
 
@@ -149,7 +150,7 @@ const ActivityIcon = styled.img`
 
 const ActivityText = styled.div`
   flex: 1;
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: #333;
   font-family: "Poppins", sans-serif;
   display: flex;
@@ -180,13 +181,13 @@ const BannerText = styled.div`
 `;
 
 const BannerTitle = styled.h2`
-  font-size: 1.6rem;
+  font-size: 1rem;
   margin-bottom: 0.5rem;
   font-weight: 600;
 `;
 
 const BannerImage = styled.img`
-  width: 7.9rem;
+  width: 7.5rem;
   height: auto;
   margin-top: 1rem;
 `;
@@ -235,7 +236,7 @@ const SliderValue = styled.div`
   top: 1.5rem;
   left: ${({ value, max }) => `calc(${(value / max) * 100}% - 1rem)`};
   color: white;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: bold;
 `;
 
@@ -245,7 +246,7 @@ const ViewGoalsButton = styled.button`
   border: none;
   border-radius: 0.5rem;
   padding: 0.7rem 1.7rem;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: normal;
   margin-top: 2rem;
   cursor: pointer;
@@ -301,7 +302,7 @@ const ChartContainer = styled.div`
   align-items: center;
 
   h3 {
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-bottom: 1rem;
     font-family: "Lato", sans-serif;
     color: ${colors.kBlackColor};
@@ -344,11 +345,11 @@ function FinancialPage() {
   return (
     <FinancialContainer>
       <MainContent>
-        <SidebarWrapper>
+        {/* <SidebarWrapper>
           <SideBar />
-        </SidebarWrapper>
+        </SidebarWrapper> */}
         <ContentWrapper>
-          <Header />
+          {/* <Header /> */}
           <FinancialWrapper>
             <LeftColumn>
               <Banner>
@@ -374,13 +375,9 @@ function FinancialPage() {
                 </BannerText>
                 <BannerImage src={financialBanner} alt="financial Banner" />
               </Banner>
+                <h3 style={{ alignSelf: "flex-start",fontSize:16 }}>Assets Vs Debt</h3>
+                
 
-              <ChartsRow1>
-                <h3 style={{ alignSelf: "flex-start" }}>Assets Vs Debt</h3>
-                <h3 style={{ alignSelf: "flex-start" }}>Income Vs Expenses</h3>
-              </ChartsRow1>
-
-              <ChartsRow>
                 <ChartContainer onClick={handleAssetClick}>
                   <ResponsiveContainer width="100%" height={300}>
                     <BarChart data={assetDebtData}>
@@ -411,6 +408,7 @@ function FinancialPage() {
                     </BarChart>
                   </ResponsiveContainer>
                 </ChartContainer>
+                <h3 style={{ alignSelf: "flex-start" ,fontSize:16}}>Income Vs Expenses</h3>
                 <ChartContainer onClick={handleOpenModal1}>
                   <ResponsiveContainer width="100%" height={300}>
                     <BarChart data={incomeExpenseData}>
@@ -441,7 +439,6 @@ function FinancialPage() {
                     </BarChart>
                   </ResponsiveContainer>
                 </ChartContainer>
-              </ChartsRow>
             </LeftColumn>
             <RightColumn>
               <UserInfo>

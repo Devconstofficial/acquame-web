@@ -8,62 +8,6 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const MainContainer = styled.div`
-  background-color: ${colors.kLoginBgColor};
-  width: 100%;
-  height: 100vh;
-  padding: 0px;
-  margin: 0px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const Logo = styled.img`
-  width: 7vw;
-  height: auto;
-  margin: 4vh 0vh 2vh 0vh;
-`;
-
-const WhiteContainer = styled.div`
-  background-color: ${colors.kWhiteColor};
-  width: 35vw;
-  height: 75vh;
-  margin: 0px;
-  border-radius: 2.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-`;
-
-const Title = styled.h1`
-  font-size: 2.5rem;
-  color: ${colors.kTitleColor};
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  text-align: center;
-  margin-top: 2vh;
-  margin-bottom: 0vh;
-`;
-
-const Subtitle = styled.p`
-  font-size: 1rem;
-  color: ${colors.kSubTitleColor};
-  margin-bottom: 6vh;
-  font-family: "Poppins", sans-serif;
-  text-align: center;
-`;
-
-const InputGroup = styled.div`
-  width: 30vw;
-  margin-bottom: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  position: relative; /* For visibility icon positioning */
-`;
-
 const Label = styled.label`
   font-size: 1rem;
   color: ${colors.kLoginLabelColor};
@@ -73,24 +17,22 @@ const Label = styled.label`
   display: block;
 `;
 
-const InputField = styled.input`
-  width: 26vw;
-  padding: 1rem;
-  padding-right: 3rem;
-  border: 0.15rem solid ${colors.kLoginTextFieldBorderColor};
-  border-radius: 0.5rem;
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-size: 1rem;
-  margin-bottom: 0rem;
-`;
 
 const EyeIcon = styled.div`
   position: absolute;
-  right: 1.5rem;
+  right: 0.5rem;
   top: 3.4rem;
   cursor: pointer;
   color: ${colors.kLoginLabelColor};
+  @media (max-width: 1024px) {
+    right: 2.5rem;
+  top: 3.4rem; /* Adjust for tablet */
+  }
+
+  @media (max-width: 768px) {
+    right: 3rem;
+    top: 3.4rem; /* Adjust for mobile */
+  }
 `;
 
 const ErrorMessage = styled.p`
@@ -119,6 +61,116 @@ const ForgotPasswordLink = styled.span`
     text-decoration: underline;
   }
 `;
+const MainContainer = styled.div`
+  background-color: ${colors.kLoginBgColor};
+  width: 100%;
+  height: 100vh;
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Logo = styled.img`
+  width: 7vw;
+  height: auto;
+  margin: 4vh 0vh 2vh 0vh;
+
+  @media (max-width: 1200px) {
+    width: 10vw; /* Adjust for tablet */
+  }
+
+  @media (max-width: 768px) {
+    width: 18vw; /* Adjust for mobile */
+  }
+`;
+
+const WhiteContainer = styled.div`
+  background-color: ${colors.kWhiteColor};
+  width: 35vw;
+  height: 75vh;
+  margin: 0px;
+  border-radius: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 1224px) {
+    width: 50vw; /* Adjust for tablet */
+  }
+
+  @media (max-width: 768px) {
+    width: 80vw; /* Adjust for mobile */
+    height: auto; /* Adjust height for smaller screens */
+    padding: 2rem;
+  }
+`;
+
+const Title = styled.h1`
+  font-size: 2.5rem;
+  color: ${colors.kTitleColor};
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 2vh;
+  margin-bottom: 0vh;
+
+  @media (max-width: 768px) {
+    font-size: 2rem; /* Adjust for mobile */
+  }
+`;
+
+const Subtitle = styled.p`
+  font-size: 1rem;
+  color: ${colors.kSubTitleColor};
+  margin-bottom: 6vh;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem; /* Adjust for mobile */
+  }
+`;
+
+const InputGroup = styled.div`
+  width: 30vw;
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  position: relative; /* For visibility icon positioning */
+
+  @media (max-width: 1024px) {
+    width: 45vw; /* Adjust for tablet */
+  }
+
+  @media (max-width: 768px) {
+    width: 80%; /* Adjust for mobile */
+  }
+`;
+
+const InputField = styled.input`
+  width: 85%;
+  padding: 1rem;
+  padding-right: 3rem;
+  border: 0.15rem solid ${colors.kLoginTextFieldBorderColor};
+  border-radius: 0.5rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  margin-bottom: 0rem;
+
+  @media (max-width: 1024px) {
+    width: 80%; /* Adjust for tablet */
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.8rem; /* Adjust for mobile */
+    font-size: 1rem;
+  }
+`;
 
 const LoginButton = styled.button`
   width: 90%;
@@ -134,6 +186,11 @@ const LoginButton = styled.button`
 
   &:hover {
     background-color: ${colors.kPrimaryColor};
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.8rem; /* Adjust for mobile */
+    font-size: 1rem;
   }
 `;
 

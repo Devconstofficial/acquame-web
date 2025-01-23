@@ -32,6 +32,98 @@ import AnxietyCheckMod from "../components/anxiety_check_modal";
 import ChallengeModal from "../components/challenge_unhelpful_through_modal";
 import RelaxationExerciseModal from "../components/relaxation_exercise_modal";
 
+const MentalWrapper = styled.div`
+  display: flex;
+  flex: 1;
+  gap: 2rem;
+  padding: 1rem;
+
+  ${media.extraSmall`
+    flex-direction: column;
+    gap: 1rem;
+  `}
+`;
+
+const BannerText = styled.div`
+  flex: 1;
+  padding: 1rem;
+  font-family: "Roboto", sans-serif;
+
+  ${media.extraSmall`
+    text-align: center;
+    padding: 0.5rem;
+  `}
+`;
+
+const BannerImage = styled.img`
+  width: 13rem;
+  height: auto;
+  margin-top: 3.8rem;
+`;
+
+const UserInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  ${media.extraSmall`
+    margin-bottom: 1rem;
+  `}
+`;
+
+const UserImage = styled.img`
+  width: 15rem;
+  height: 15rem;
+
+  ${media.extraSmall`
+    width: 8rem;
+    height: 8rem;
+  `}
+`;
+
+const BoxRow = styled.div`
+  display: flex;
+  margin-top: 2rem;
+
+  
+  @media (max-width: 1024px) {
+    
+   flex-direction: row;
+    width: 80%; /* Adjust for tablet */
+  }
+
+  @media (max-width: 768px) {
+  flex-direction: column;
+    width: 80%; /* Adjust for mobile */
+  }
+`;
+
+const Box = styled.div`
+  flex: 1;
+  margin: 0 0.5rem;
+  padding: 1rem;
+  height: 15vh;
+  background-color: ${(props) =>
+    props.bgColor || colors.kPinkColor || "#f0f0f0"};
+  border-radius: 0.8rem;
+  text-align: center;
+  cursor: pointer;
+
+  @media (max-width: 1024px) {
+    
+    width: 30%; /* Adjust for tablet */
+  }
+
+  @media (max-width: 768px) {
+  flex-direction: column;
+  margin-top:1rem;
+  flex:1;
+  width: 60%; /* Adjust for mobile */
+  }
+`;
+
+
 const MentalContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -57,17 +149,6 @@ const ContentWrapper = styled.div`
   background-color: ${colors.kWhiteColor};
 `;
 
-const MentalWrapper = styled.div`
-  display: flex;
-  flex: 1;
-  gap: 2rem;
-  padding: 1rem;
-
-  ${media.extraSmall`
-    flex-direction: column;
-    gap: 1rem;
-  `}
-`;
 
 const LeftColumn = styled.div`
   flex: 3;
@@ -83,27 +164,15 @@ const RightColumn = styled.div`
   border-left: 1px solid ${colors.kStrokeColor1};
 `;
 
-const UserInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 2rem;
-`;
-
-const UserImage = styled.img`
-  width: 15rem;
-  height: 15rem;
-`;
-
 const UserName = styled.h3`
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   margin: 0;
   font-family: "Lato", sans-serif;
   color: ${colors.kBlackColor};
 `;
 
 const UserHandle = styled.p`
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-family: "Lato", sans-serif;
   color: ${colors.kHandleColor};
 `;
@@ -118,22 +187,10 @@ const Banner = styled.div`
   max-height: 26vh;
 `;
 
-const BannerText = styled.div`
-  flex: 1;
-  padding: 1rem;
-  font-family: "Roboto", sans-serif;
-`;
-
 const BannerTitle = styled.h2`
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   margin-bottom: 0.5rem;
   font-weight: 600;
-`;
-
-const BannerImage = styled.img`
-  width: 30rem;
-  height: auto;
-  margin-top: 1.5rem;
 `;
 
 const ViewGoalsButton = styled.button`
@@ -142,7 +199,7 @@ const ViewGoalsButton = styled.button`
   border: none;
   border-radius: 0.5rem;
   padding: 0.3rem 1.7rem;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: normal;
   margin-top: 1rem;
   cursor: pointer;
@@ -156,9 +213,11 @@ const ViewGoalsButton = styled.button`
 
 const IconRow = styled.div`
   display: flex;
+  width:80%;
   justify-content: space-between;
   align-items: center;
   margin-top: 1rem;
+  
 `;
 
 const IconItem = styled.div`
@@ -184,48 +243,9 @@ const IconTitlecontainer = styled.div`
 `;
 
 const IconTitle = styled.p`
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   font-family: "Roboto", sans-serif;
   color: ${colors.kWhiteColor};
-`;
-
-const BoxRow = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-top: 2rem;
-
-  ${media.extraSmall`
-    flex-direction: column;
-    gap: 1rem;
-  `}
-`;
-
-const Box = styled.div`
-  flex: 1;
-  margin: 0 0.5rem;
-  padding: 1rem;
-  height: 20vh;
-  background-color: ${(props) =>
-    props.bgColor || colors.kPinkColor || "#f0f0f0"};
-  border-radius: 0.8rem;
-  text-align: center;
-  cursor: pointer;
-  align-content: center;
-
-  &:first-child {
-    margin-left: 0;
-  }
-
-  &:last-child {
-    margin-right: 0;
-  }
-
-  ${media.extraSmall`
-    margin: 0 0.5rem;
-  `}
-  ${media.mobile`
-  margin: 0 0.5rem;
-  `}
 `;
 
 const BoxImage = styled.img`
@@ -234,7 +254,7 @@ const BoxImage = styled.img`
 `;
 
 const BoxText = styled.p`
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin-top: 0.5rem;
   color: ${colors.kWhiteColor};
   font-family: "Roboto", sans-serif;
@@ -246,7 +266,7 @@ const InsightsWrapper = styled.div`
 `;
 
 const InsightsTitle = styled.h3`
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: ${colors.kBlackColor};
   font-family: "Poppins", sans-serif;
   margin-bottom: 1rem;
@@ -272,7 +292,7 @@ const InsightsCard = styled.div`
 `;
 
 const InsightsDescription = styled.p`
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   font-family: "Lato", sans-serif;
   color: ${colors.kWhiteColor};
   
@@ -284,7 +304,7 @@ const ViewDetailsButton = styled.button`
   border: none;
   border-radius: 1rem;
   padding: 0.5rem 1rem;
-  font-size: 1rem;
+  font-size: 0.8rem;
   cursor: pointer;
   align-self:center;
   margin: 0rem 3.5rem;
@@ -307,7 +327,7 @@ const ToggleButton = styled.button`
   border: none;
   border-radius: 15px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.8rem;
 
 `;
 
@@ -356,11 +376,11 @@ function MentalPage() {
   return (
     <MentalContainer>
       <MainContent>
-        <SidebarWrapper>
+        {/* <SidebarWrapper>
           <SideBar />
-        </SidebarWrapper>
+        </SidebarWrapper> */}
         <ContentWrapper>
-          <Header />
+          {/* <Header /> */}
           <MentalWrapper>
             <LeftColumn>
               <Banner>
@@ -434,18 +454,18 @@ function MentalPage() {
                   <BoxText>Plan Your Week</BoxText>
                 </Box>
               </BoxRow>
-              <BoxRow
+              {/* <BoxRow
                 style={{
                   display: "flex",
                   maxWidth: "20vw",
                   marginLeft: "21vw",
                 }}
-              >
-                <Box bgColor={colors.kPrimaryColor}>
+              > */}
+                <Box style={{width: window.innerWidth <= 786 ? '48%' : 270, height:100,marginTop:10,}} bgColor={colors.kPrimaryColor}>
                   <BoxImage src={Other} alt="Therapy" />
                   <BoxText>Other Resources</BoxText>
                 </Box>
-              </BoxRow>
+              {/* </BoxRow> */}
             </LeftColumn>
             <RightColumn>
               <UserInfo>

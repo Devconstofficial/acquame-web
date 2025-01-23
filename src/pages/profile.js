@@ -77,7 +77,7 @@ const ToggleButton = styled.button`
   border: none;
   border-radius: 15px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.8rem;
 `;
 
 const SecondaryButton = styled.button`
@@ -89,7 +89,7 @@ const SecondaryButton = styled.button`
   border: none;
   border-radius: 15px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.8rem;
 
   &:hover {
     background-color: ${colors.kPrimaryColor};
@@ -153,7 +153,7 @@ const BannerText = styled.div`
 `;
 
 const BannerTitle = styled.h2`
-  font-size: 2rem;
+  font-size: 0.6rem;
   margin-bottom: 0.5rem;
   font-weight: 600;
 
@@ -171,18 +171,18 @@ const BannerTitle = styled.h2`
 `;
 
 const BannerSubtitle = styled.p`
-  font-size: 1rem;
+  font-size: 0.6rem;
   color: ${colors.kWhiteColor}80;
 
   ${media.extraSmall`
-    font-size: 0.7rem;
+    font-size: 0.4rem;
   `}
   ${media.mobile`
-    font-size: 0.7rem;
+    font-size: 0.4rem;
   `}
 
   ${media.tablet`
-    font-size: 0.8rem;
+    font-size: 0.6rem;
   `}
 `;
 const ViewDetailsButton = styled.button`
@@ -191,7 +191,7 @@ const ViewDetailsButton = styled.button`
   border: none;
   border-radius: 1rem;
   padding: 0.5rem 1rem;
-  font-size: 1rem;
+  font-size: 0.8rem;
   cursor: pointer;
   align-self: center;
 
@@ -243,14 +243,14 @@ const CameraIconContainer = styled.div`
 
 const UserName = styled.p`
   margin-top: 0.2rem;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 700;
   margin-bottom: 0.2rem;
   color: ${colors.kBlackColor};
 `;
 
 const UserJoined = styled.p`
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: ${colors.kLightGreyColor}80;
   margin-top: 0rem;
   padding: 0rem;
@@ -294,13 +294,13 @@ const DetailIcon = styled.img`
 `;
 
 const DetailText = styled.p`
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   padding: 0rem;
   margin: 0rem 0rem 0.3rem 0rem;
   color: ${colors.kBlackColor};
 `;
 const DetailText1 = styled.p`
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   margin: 0rem;
   padding: 0rem;
   color: ${colors.kLightGreyColor};
@@ -351,11 +351,11 @@ function ProfilePage() {
   return (
     <MentalContainer>
       <MainContent>
-        <SidebarWrapper>
+        {/* <SidebarWrapper>
           <SideBar />
-        </SidebarWrapper>
+        </SidebarWrapper> */}
         <ContentWrapper>
-          <Header />
+          {/* <Header /> */}
           <MentalWrapper>
             <LeftColumn>
               <UserImageContainer>

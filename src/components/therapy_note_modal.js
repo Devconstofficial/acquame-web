@@ -318,17 +318,16 @@ function TherapyNotesModal({ isOpen, onClose }) {
               style={{ width: "70%", marginRight: "0rem" }}
             />
           </div>
-
-          <UpdateButton
+        </RowContainer>
+        <UpdateButton
             style={{
               maxHeight: "3rem",
-              marginTop: "3.3rem",
+              marginTop: "0.3rem",
               marginLeft: "0rem",
             }}
           >
             Search
           </UpdateButton>
-        </RowContainer>
         <RowContainer style={{ marginTop: "1rem" }}>
           <p style={{ fontWeight: "600", marginRight: "0.3rem" }}>Search</p>
 

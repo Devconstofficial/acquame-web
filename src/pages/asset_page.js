@@ -78,7 +78,7 @@ const SectionTitle = styled.h4`
   margin: 0;
   color: ${colors.kBlackColor};
   font-family: "Roboto", sans-serif;
-  font-size: 1.2rem;
+  font-size: 1rem;
 `;
 
 const AddButton = styled.button`
@@ -131,6 +131,7 @@ const ItemText = styled.div`
   word-wrap: break-word;
   font-family: "Roboto", sans-serif;
   white-space: normal;
+  font-size: 0.9rem;
 `;
 
 const ActionContainer = styled.div`
@@ -151,12 +152,12 @@ const ActionCircle = styled.div`
   border-radius: 50%;
   color: ${({ textColor }) => textColor};
   background-color: ${({ bgColor }) => bgColor};
-  font-size: 12px;
+  font-size: 10px;
   cursor: pointer;
 `;
 
 const Price = styled.p`
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 700;
   color: ${colors.kPrimaryColor};
   gap: 0.5rem;
@@ -189,13 +190,13 @@ const SummaryContainer = styled.div`
 
 const SummaryValue = styled.h2`
   margin: 0;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-family: "Work Sans", sans-serif;
 `;
 
 const SummaryLabel = styled.p`
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-family: "Work Sans", sans-serif;
 `;
 

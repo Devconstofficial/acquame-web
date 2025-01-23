@@ -40,7 +40,7 @@ const CloseButton = styled.button`
 `;
 
 const Label = styled.label`
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: ${colors.kBlackColor};
   margin: 1.5rem 0rem 0.3rem 0rem;
   font-family: "Work Sans", sans-serif;
@@ -49,7 +49,7 @@ const Label = styled.label`
 
   span {
     font-weight: 400;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     color: ${colors.kDarkGrayColor};
   }
 `;
@@ -60,7 +60,7 @@ const InputField = styled.input`
   border: 0.15rem solid ${colors.kLoginTextFieldBorderColor};
   border-radius: 0.5rem;
   font-family: "Work Sans", sans-serif;
-  font-size: 1rem;
+  font-size: 0.8rem;
   margin-bottom: 0rem;
 
   &:focus {
@@ -75,7 +75,7 @@ const RichTextArea = styled.textarea`
   border: 0.15rem solid ${colors.kLoginTextFieldBorderColor};
   border-radius: 0.5rem;
   font-family: "Work Sans", sans-serif;
-  font-size: 1rem;
+  font-size: 0.8rem;
   min-height: 8rem;
   resize: none;
 
@@ -97,7 +97,7 @@ const SelectField = styled.select`
   border: 0.15rem solid ${colors.kLoginTextFieldBorderColor};
   border-radius: 0.5rem;
   font-family: "Work Sans", sans-serif;
-  font-size: 1rem;
+  font-size: 0.8rem;
   background: white;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -112,8 +112,9 @@ const SelectField = styled.select`
 
 const ArrowIcon = styled(FaChevronDown)`
   position: absolute;
-  right: 1rem;
+  right: 0.8rem;
   top: 50%;
+  font-size: 0.8rem;
   transform: translateY(-50%);
   color: ${colors.kDarkGrayColor}70;
   pointer-events: none; 
@@ -143,7 +144,7 @@ const CancelButton = styled.button`
   padding: 0.7rem 1.5rem;
   font-family: "Work Sans", sans-serif;
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 0.8rem;
   cursor: pointer;
 `;
 
@@ -156,7 +157,7 @@ const AddGoalButton = styled.button`
   padding: 0.7rem 1.5rem;
   font-family: "Work Sans", sans-serif;
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 0.8rem;
   cursor: pointer;
 `;
 

@@ -169,7 +169,7 @@ const BannerTitle = styled.h2`
 `;
 
 const BannerSubtitle = styled.p`
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 
   ${media.extraSmall`
     font-size: 0.9rem;
@@ -228,7 +228,7 @@ const BoxImage = styled.img`
 `;
 
 const BoxText = styled.p`
-  font-size: 1.5rem;
+  font-size: 1rem;
   margin-top: 0.5rem;
   color: ${colors.kWhiteColor};
   font-family: "Roboto", sans-serif;
@@ -239,6 +239,7 @@ const RightColumn = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 1rem;
+  height:100;
   background-color: ${colors.kWhiteColor};
   border-left: 1px solid ${colors.kStrokeColor1};
 
@@ -260,7 +261,7 @@ const UserImage = styled.img`
 `;
 
 const UserName = styled.h3`
-  font-size: 1.4rem;
+  font-size: 1rem;
   margin: 0;
   font-family: "Lato", sans-serif;
   color: ${colors.kBlackColor};
@@ -273,7 +274,7 @@ const UserHandle = styled.p`
 `;
 
 const SectionTitle = styled.p`
-  font-size: 1.4rem;
+  font-size: 1rem;
   font-weight: 500;
   margin-bottom: 1rem;
   color: ${colors.kBlackColor};
@@ -332,20 +333,19 @@ function Dashboard() {
   return (
     <DashboardContainer>
       <MainContent>
-        <SidebarWrapper>
+        {/* <SidebarWrapper>
           <SideBar />
-        </SidebarWrapper>
+        </SidebarWrapper> */}
         <ContentWrapper>
-          <Header />
+          {/* <Header /> */}
           <DashboardWrapper>
             <LeftColumn>
               <Banner>
                 <BannerImage src={homeBannerImage} alt="Health Banner" />
                 <BannerText>
-                  <BannerTitle>Health is improving!</BannerTitle>
+                  {/* <BannerTitle>Health is improving!</BannerTitle> */}
                   <BannerSubtitle>
-                    Your Financial Health is improving! Keep up the great work
-                    with expense tracking.
+                  A clear and complete view of your overall well-being, would empower you to make informed decisions and achieve balance in your life.
                   </BannerSubtitle>
                 </BannerText>
               </Banner>
@@ -379,8 +379,8 @@ function Dashboard() {
                   <ActivityIcon src={financialImage} alt="Financial Icon" />
                 </ActivityIconWrapper>
                 <ActivityText>
-                  <p isTitle={true} style={{fontWeight: "bold"}}>Financial Health</p>
-                  <p style={{color: colors.kLightGreyColor1, fontWeight: "300"}}>improved by 5% this month.</p>
+                  <p isTitle={true} style={{fontWeight: "bold",fontSize:14}}>Financial Health</p>
+                  <p style={{color: colors.kLightGreyColor1, fontWeight: "300",fontSize:12}}>improved by 5% this month.</p>
                 </ActivityText>
               </ActivityBox>
               <ActivityBox>
@@ -388,8 +388,8 @@ function Dashboard() {
                   <ActivityIcon src={mentalImage} alt="Mental Icon" />
                 </ActivityIconWrapper>
                 <ActivityText>
-                  <p isTitle={true} style={{fontWeight: "bold"}}>Mental Health</p>
-                  <p style={{color: colors.kLightGreyColor1, fontWeight: "300"}}>improved by 7% this month.</p>
+                  <p isTitle={true} style={{fontWeight: "bold",fontSize:14}}>Mental Health</p>
+                  <p style={{color: colors.kLightGreyColor1, fontWeight: "300",fontSize:12}}>improved by 7% this month.</p>
                 </ActivityText>
               </ActivityBox>
               <ActivityBox>
@@ -397,8 +397,8 @@ function Dashboard() {
                   <ActivityIcon src={physicalImage} alt="Physical Icon" />
                 </ActivityIconWrapper>
                 <ActivityText>
-                  <p isTitle={true} style={{fontWeight: "bold"}}>Physical Health</p>
-                  <p style={{color: colors.kLightGreyColor1, fontWeight: "300"}}>improved by 5% this month.</p>
+                  <p isTitle={true} style={{fontWeight: "bold",fontSize:14}}>Physical Health</p>
+                  <p style={{color: colors.kLightGreyColor1, fontWeight: "300",fontSize:12}}>improved by 5% this month.</p>
                 </ActivityText>
               </ActivityBox>
             </RightColumn>
