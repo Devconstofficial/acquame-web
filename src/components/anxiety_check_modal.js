@@ -230,17 +230,17 @@ function AnxietyCheckModal({ isOpen, onClose }) {
             />
           </div>
 
-          <UpdateButton
+          
+        </RowContainer>
+        <UpdateButton
             style={{
               maxHeight: "3rem",
-              marginTop: "3.3rem",
+              marginTop: "0.3rem",
               marginLeft: "0rem",
             }}
           >
             Search
           </UpdateButton>
-        </RowContainer>
-
         <TableContainer>
           <Table>
             <thead>

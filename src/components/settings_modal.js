@@ -76,18 +76,18 @@ const IconContainer = styled.div`
 const OptionText = styled.span`
   flex: 1;
   margin-left: 1rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-family: "Roboto", sans-serif;
   color: ${colors.kBlackColor};
 `;
 
 const ArrowIcon = styled.img`
-  width: 0.5rem;
+  width: 0.3rem;
   height: auto;
 `;
 
 const ItemIcon = styled.img`
-  width: 2rem;
+  width: 1.3rem;
   height: auto;
   color: ${colors.kWhiteColor};
 `;
@@ -98,7 +98,7 @@ const CloseButton = styled.button`
   right: 0.5rem;
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: 2rem;
   cursor: pointer;
   color: ${colors.kPrimaryColor};
 

@@ -31,7 +31,7 @@ const ModalContainer = styled.div`
 `;
 
 const ModalTitle = styled.p`
-  font-size: 1.1rem;
+  font-size: 1rem;
   margin-bottom: 1rem;
   color: ${colors.kBlackColor};
   font-family: "Roboto", sans-serif;
@@ -58,19 +58,19 @@ const NotificationCard = styled.div`
   color: ${colors.kWhiteColor};
 
   & h5 {
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin: 0;
     color: ${colors.kWhiteColor};
     font-family: "Work Sans", sans-serif;
   }
 
   & p {
-    font-size: 1rem;
+    font-size: 0.8rem;
     margin: 0.5rem 0;
   }
 
   & span {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     color: ${colors.kWhiteColor}80;
   }
 `;
@@ -80,20 +80,20 @@ const NotificationItem = styled.div`
   padding: 0rem 1.5rem;
 
   & h5 {
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin: 0;
     font-weight: bold;
     color: ${colors.kBlackColor};
   }
 
   & p {
-    font-size: 1rem;
+    font-size: 0.8rem;
     margin: 0.5rem 0;
     color: ${colors.kTextColor};
   }
 
   & span {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     color: ${colors.kTextColor}80;
   }
 `;
@@ -104,7 +104,7 @@ const CloseButton = styled.button`
   right: 0.5rem;
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: 2rem;
   cursor: pointer;
   color: ${colors.kPrimaryColor};
 

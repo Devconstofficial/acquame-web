@@ -1,9 +1,8 @@
 
 import React from 'react';
 import {
-  BrowserRouter as Router,
   Route,
-  Routes,
+  Routes, BrowserRouter
 } from 'react-router-dom';
 import Login from './pages/auth/login';
 import ForgotPassword from './pages/auth/forgot_password';
@@ -18,15 +17,18 @@ import Financial from "./pages/financial";
 import Asset from "./pages/asset_page";
 import Mental from "./pages/mental";
 import Profile from "./pages/profile";
-
+import Layout from './components/layout';
 const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path='/' element={<Login />} />
-        <Route path='/forgot-password' element={<ForgotPassword />} />
+    <BrowserRouter>
+    <Routes>
+    <Route path='/' element={<Login />} />
+    <Route path='/forgot-password' element={<ForgotPassword />} />
         <Route path='/otp-verification' element={<OTPVerification />} />
         <Route path='/reset-password' element={<ResetPassword />} />
+    </Routes>
+      <Layout>
+      <Routes>
         <Route path='/home' element={<Home />} />
         <Route path='/physical' element={<Physical />} />
         <Route path='/financial' element={<Financial />} />
@@ -37,7 +39,8 @@ const App = () => {
         <Route path='/mental' element={<Mental />} />
         <Route path='/profile' element={<Profile />} />
       </Routes>
-    </Router>
+      </Layout>
+    </BrowserRouter>
   );
 }
 

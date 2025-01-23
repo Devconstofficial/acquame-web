@@ -83,7 +83,7 @@ const Label = styled.label`
 `;
 
 const InputField = styled.input`
-  width: 90%;
+  width: 30%;
   padding: 1rem;
   border: 0.15rem solid ${colors.kLoginTextFieldBorderColor};
   border-radius: 0.5rem;
@@ -249,16 +249,17 @@ function JournalModal({ isOpen, onClose }) {
               />
             </div>
   
-            <UpdateButton
+            
+          </RowContainer>
+          <UpdateButton
               style={{
                 maxHeight: "3rem",
-                marginTop: "3.3rem",
+                marginTop: "0.3rem",
                 marginLeft: "0rem",
               }}
             >
               Search
             </UpdateButton>
-          </RowContainer>
           <RowContainer style={{ marginTop: "1rem" }}>
             <p style={{ fontWeight: "600", marginRight: "0.3rem" }}>Search</p>
   
@@ -318,7 +319,7 @@ function JournalModal({ isOpen, onClose }) {
             </Pagination>
           </TableContainer>
 
-          <RowContainer style={{ marginTop: "1rem", justifyContent: "space-between" }}>
+          <RowContainer style={{ marginTop: "1rem", justifyContent: "center" }}>
             <p style={{ fontWeight: "600", marginRight: "0.3rem" }}>Date</p>
   
             <div>
@@ -326,7 +327,7 @@ function JournalModal({ isOpen, onClose }) {
                 type="text"
                 value={selectedNote.date}
                 readOnly
-                style={{ width: "30%" , marginLeft: "18rem"}}
+                style={{ width: "30%" , marginLeft: "8rem"}}
               />
             </div>
           </RowContainer>

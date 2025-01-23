@@ -106,7 +106,7 @@ const CloseButton = styled.button`
   right: 0.5rem;
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: 2rem;
   cursor: pointer;
   color: ${colors.kPrimaryColor};
 
@@ -121,7 +121,7 @@ const NotificationSettingsModal = ({ isVisible, onClose }) => {
   return (
     <>
       <Overlay onClick={onClose} />
-      <ModalContainer>
+      <ModalContainer style={{width:'45%'}}>
         <CloseButton onClick={onClose}>&times;</CloseButton>
         <NotificationOption>
           <span>Financial Health Notifications</span>
