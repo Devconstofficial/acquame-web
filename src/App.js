@@ -17,7 +17,7 @@ import Layout from './components/layout';
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/acquame-web">
       <Routes>
         {/* Authentication Routes */}
         <Route path='/' element={<Login />} />
