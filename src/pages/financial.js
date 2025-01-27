@@ -78,9 +78,7 @@ const RightColumn = styled.div`
   background-color: ${colors.kWhiteColor};
   border-left: 1px solid ${colors.kStrokeColor1};
 
-  @media (max-width: 768px) {
-  display:none;
-  }
+ 
 `;
 
 const UserInfo = styled.div`
@@ -125,11 +123,12 @@ const ActivityBox = styled.div`
   border: 1px solid #ddd;
   border-radius: 1rem;
   margin-bottom: 1rem;
-  max-width: 15vw;
 
-  ${media.mobile`
-    flex-direction: row;
-  `}
+ @media (max-width: 300px) {
+  width:600vw;
+  padding:0.4rem
+  margin-left:0.1rem;
+  }
 `;
 
 const ActivityIconWrapper = styled.div`
@@ -141,11 +140,19 @@ const ActivityIconWrapper = styled.div`
   justify-content: center;
   border-radius: 20%;
   background-color: ${(props) => props.bgColor || "#ccc"};
+  @media (max-width: 300px) {
+  width:2rem;
+  height:2rem;
+  }
 `;
 
 const ActivityIcon = styled.img`
   width: 1.5rem;
   height: 1.5rem;
+  @media (max-width: 300px) {
+  width:1rem;
+  height:1rem;
+  }
 `;
 
 const ActivityText = styled.div`
@@ -157,7 +164,11 @@ const ActivityText = styled.div`
   flex-direction: column;
   align-items: left;
   gap: 0.1rem;
-
+  margin-left:0.6rem;
+@media (max-width: 300px) {
+  font-size:0.8rem;
+  margin-left:1rem;
+  }
   p {
     margin: 0;
     font-weight: ${(props) => (props.isTitle ? "bold" : "normal")};
@@ -178,18 +189,27 @@ const BannerText = styled.div`
   flex: 1;
   padding: 1.5rem;
   font-family: "Roboto", sans-serif;
+  
 `;
 
 const BannerTitle = styled.h2`
   font-size: 1rem;
   margin-bottom: 0.5rem;
   font-weight: 600;
+  @media (max-width: 300px) {
+  font-size:1rem;
+  font-weight:300;
+  }
 `;
 
 const BannerImage = styled.img`
   width: 7.5rem;
   height: auto;
   margin-top: 1rem;
+  @media (max-width: 300px) {
+  width:5.5rem;
+  margin-top:2rem;
+  }
 `;
 const StyledSliderContainer = styled.div`
   position: relative;
@@ -327,7 +347,7 @@ function FinancialPage() {
   const assetDebtData = [
     { name: "JAN", Assets: 3000, Debt: 1200 },
     { name: "FEB", Assets: 2800, Debt: 1500 },
-    { name: "MAR", Assets: 3200, Debt: 1400 },
+    { name: "MAR", Assets: 3200, Debt: 1300 },
     { name: "APR", Assets: 3500, Debt: 1700 },
     { name: "MAY", Assets: 3300, Debt: 1800 },
     { name: "JUN", Assets: 3100, Debt: 1600 },
@@ -336,7 +356,7 @@ function FinancialPage() {
   const incomeExpenseData = [
     { name: "JAN", Income: 3200, Expenses: 1800 },
     { name: "FEB", Income: 3000, Expenses: 1700 },
-    { name: "MAR", Income: 3400, Expenses: 1900 },
+    { name: "MAR", Income: 3300, Expenses: 1900 },
     { name: "APR", Income: 3600, Expenses: 2000 },
     { name: "MAY", Income: 3500, Expenses: 2100 },
     { name: "JUN", Income: 3300, Expenses: 1900 },

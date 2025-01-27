@@ -35,10 +35,6 @@ const MainContent = styled.div`
   background-color: ${colors.kWhiteColor};
 `;
 
-const SidebarWrapper = styled.div`
-  flex: 0 0 15vw;
-  background-color: ${colors.kPrimaryColor};
-`;
 
 const ContentWrapper = styled.div`
   flex: 1;
@@ -49,8 +45,6 @@ const ContentWrapper = styled.div`
 const PhysicalWrapper = styled.div`
   display: flex;
   flex: 1;
-  gap: 2rem;
-  padding: 1rem;
 
   ${media.extraSmall`
     flex-direction: column;
@@ -69,6 +63,7 @@ const Banner = styled.div`
   background-color: ${colors.kPrimaryColor};
   border-radius: 1rem;
   color: white;
+  margin-right:1rem;
 `;
 
 const BannerText = styled.div`
@@ -87,6 +82,10 @@ const BannerImage = styled.img`
   width: 10.5rem;
   height: auto;
   margin-top: 1rem;
+  @media (max-width: 450px) {
+  width:20vw;
+  margin-top:8rem;
+  }
 `;
 const StyledSliderContainer = styled.div`
   position: relative;
@@ -173,6 +172,9 @@ const Subheadings = styled.h4`
 const MetricContainer = styled.div`
   display: flex;
   margin-top: 1rem;
+  @media (max-width: 450px) {
+  flex-direction:column;
+  }
 `;
 
 const MetricTitle = styled.p`
@@ -192,8 +194,9 @@ const MetricBox = styled.div`
   margin-right: 1rem;
   cursor: pointer;
 
-  &:last-child {
-    margin-right: 0;
+  @media (max-width: 450px) {
+  width:55vw;
+  margin-top:1rem;
   }
 `;
 
@@ -281,7 +284,6 @@ const RightColumn = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
   background-color: ${colors.kWhiteColor};
   border-left: 1px solid ${colors.kStrokeColor1};
    @media (max-width: 768px) {

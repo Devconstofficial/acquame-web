@@ -12,40 +12,50 @@ import logoImage from "../asset/images/splash_logo.png";
 import hamMenuImage from "../asset/icons/ham_menu.png";
 import "@fontsource/poppins";
 import "@fontsource/lato";
-import { media } from "../responsive";
 
-let height = window.innerHeight
-console.log(height)
 const SideBarContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 17vw;
-  height: ${height}px;
+  width: ${(props) => (props.isCollapsed ? "72px" : "17vw")};
+  height: 100vh;
   background-color: ${colors.kPrimaryColor};
   color: ${colors.kWhiteColor};
   font-family: "Lato", sans-serif;
   position: sticky;
+  transition: width 0.3s ease;
+`;
 
-  ${media.extraSmall`display: none;`}
-  ${media.mobile`display: none;`}
-  ${media.tablet`display: none;`}
+const ToggleButton = styled.button`
+  display: ${(props) => (props.show ? "block" : "none")};
+  background-color: ${colors.kPrimaryColor};
+  color: ${colors.kWhiteColor};
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: ${colors.kSecondaryColor};
+  }
 `;
 
 const LogoContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
   padding: 1.5rem;
   background-color: ${colors.kPrimaryColor};
 `;
 
 const Logo = styled.img`
-  width: 11vw;
+  width: ${(props) => (props.isCollapsed ? "40px" : "11vw")};
   height: auto;
-  ${media.extraSmall`width:6vw`}
-  ${media.mobile`width:6vw`}
-  ${media.tablet`width:6vw`}
+  transition: width 0.3s ease;
 `;
 
 const MenuList = styled.ul`
@@ -54,50 +64,17 @@ const MenuList = styled.ul`
   margin: 0;
   flex-grow: 1;
 `;
-
-const HamburgerMenu = styled.div`
-  display: none;
-
-  ${media.extraSmall`
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 1rem 1.5rem; 
-    background-color: ${colors.kPrimaryColor}; 
-    color: ${colors.kWhiteColor};
-  `}
-
-  ${media.mobile`
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 1rem 1.5rem; 
-    background-color: ${colors.kPrimaryColor};  
-    color: ${colors.kWhiteColor};
-  `}
-
-  ${media.tablet`
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 1rem 1.5rem; 
-    background-color: ${colors.kPrimaryColor}; 
-    color: ${colors.kWhiteColor};
-  `}
-`;
-
-const HamburgerIcon = styled.img`
-  width: 2.2rem;
-  height: auto;
-  cursor: pointer;
+const ResponsiveSpan  = styled.div`
+  @media (max-width: 450px) {
+  display:none;
+  }
 `;
 
 const MenuItem = styled.li`
   display: flex;
-  flex-grow: 1;
   align-items: center;
   padding: 1rem 1.5rem;
-  margin: 0 1rem;
+  margin: 0 0rem;
   cursor: pointer;
   font-size: 1rem;
   background-color: ${(props) =>
@@ -108,36 +85,25 @@ const MenuItem = styled.li`
 
   img {
     width: 1.5rem;
-    margin-right: 1rem;
+    margin-right: ${(props) => (props.isCollapsed ? "0" : "1rem")};
     filter: brightness(0) invert(1);
   }
 
-  &.logout {
-    font-family: "Poppins", sans-serif;
+  span {
+    display: ${(props) => (props.isCollapsed ? "none" : "inline")};
+    transition: display 0.3s ease;
   }
-`;
-
-const OverlayMenu = styled.div`
-  display: ${(props) => (props.open ? "flex" : "none")};
-  flex-direction: column;
-  position: absolute;
-  top: 4rem;
-  left: 0;
-  width: 100%;
-  background-color: ${colors.kPrimaryColor};
-  z-index: 100;
-  padding: 1rem 0;
 `;
 
 const LogoutWrapper = styled.div`
   margin-top: auto;
 `;
 
-function SideBar({ isCollapsed, toggleSidebar }) {
+function SideBar() {
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location)
-  const [isMenuOpen, setIsMenuOpen] = useState(isCollapsed);
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [showToggleButton, setShowToggleButton] = useState(false);
 
   const menuItems = [
     { name: "Home", icon: homeIcon, route: "/home" },
@@ -151,13 +117,14 @@ function SideBar({ isCollapsed, toggleSidebar }) {
     ?.name;
 
   const handleResize = () => {
-    if (window.innerWidth > 768) {
-      setIsMenuOpen(false);  // Auto-close the menu when screen size increases
-    }
+    const isSmallScreen = window.innerWidth < 500;
+    setShowToggleButton(isSmallScreen);
+    if (!isSmallScreen) setIsCollapsed(false);
   };
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
+    handleResize(); // Check initial size
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -165,7 +132,6 @@ function SideBar({ isCollapsed, toggleSidebar }) {
 
   const handleNavigation = (route) => {
     navigate(route);
-    setIsMenuOpen(false);
   };
 
   const handleLogout = () => {
@@ -174,40 +140,16 @@ function SideBar({ isCollapsed, toggleSidebar }) {
 
   return (
     <>
-      <HamburgerMenu>
-        {
-          isCollapsed ? 
-        <Logo src={logoImage} alt="Logo" /> : null
-        }
-        <HamburgerIcon
-          src={hamMenuImage}
-          alt="Menu"
-          style={{width:20,height:20}}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        />
-      </HamburgerMenu>
+      {/* <ToggleButton
+        show={showToggleButton}
+        onClick={() => setIsCollapsed(!isCollapsed)}
+      >
+        {isCollapsed ? "Expand" : "Collapse"}
+      </ToggleButton> */}
 
-      <OverlayMenu open={isMenuOpen}>
-        {menuItems.map((item) => (
-          <MenuItem
-            key={item.name}
-            onClick={() => handleNavigation(item.route)}
-            isSelected={activeMenu === item.name}
-          >
-            <img src={item.icon} alt={item.name} />
-            {item.name}
-          </MenuItem>
-        ))}
-
-        <MenuItem className="logout" onClick={handleLogout}>
-          <img src={logoutIcon} alt="Logout" />
-          Logout
-        </MenuItem>
-      </OverlayMenu>
-
-      <SideBarContainer>
+      <SideBarContainer isCollapsed={isCollapsed}>
         <LogoContainer>
-          <Logo src={logoImage} alt="Logo" />
+          <Logo src={logoImage} alt="Logo" isCollapsed={isCollapsed} />
         </LogoContainer>
         <MenuList>
           {menuItems.map((item) => (
@@ -215,16 +157,18 @@ function SideBar({ isCollapsed, toggleSidebar }) {
               key={item.name}
               onClick={() => handleNavigation(item.route)}
               isSelected={activeMenu === item.name}
+              isCollapsed={isCollapsed}
+              
             >
               <img src={item.icon} alt={item.name} />
-              {item.name}
+              <ResponsiveSpan >{item.name}</ResponsiveSpan >
             </MenuItem>
           ))}
         </MenuList>
         <LogoutWrapper>
           <MenuItem className="logout" onClick={handleLogout}>
             <img src={logoutIcon} alt="Logout" />
-            Logout
+            <ResponsiveSpan>Logout</ResponsiveSpan>
           </MenuItem>
         </LogoutWrapper>
       </SideBarContainer>

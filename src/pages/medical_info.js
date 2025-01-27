@@ -321,11 +321,11 @@ function MedicalInfo() {
   return (
     <MedicalContainer>
       <MainContent>
-        <SidebarWrapper>
+        {/* <SidebarWrapper>
           <SideBar />
-        </SidebarWrapper>
+        </SidebarWrapper> */}
         <ContentWrapper>
-          <Header showChevronLeft={true} />
+          {/* <Header showChevronLeft={true} /> */}
           <MedicalWrapper>
             <SectionWrapper>
               <SectionHeader>

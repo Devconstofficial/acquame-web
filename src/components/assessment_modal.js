@@ -24,6 +24,15 @@ const ModalContainer = styled.div`
   border-radius: 0.5rem;
   padding: 2rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  @media (max-width: 450px) {
+    width:70vw;
+  }
+`;
+
+const ScrollableContent = styled.div`
+  max-height: 60vh; /* Restrict the height of the scrollable area */
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding-right: 1rem; /* Optional padding for better scrolling experience */
 `;
 
 const Title = styled.h2`
@@ -73,6 +82,9 @@ const TextInput = styled.input`
   text-align: center;
   border: none;
   background: none;
+  @media (max-width: 450px) {
+    font-size:0.6rem;
+  }
 `;
 
 const TotalScoreRow = styled.div`
@@ -82,6 +94,9 @@ const TotalScoreRow = styled.div`
   margin-bottom: 1rem;
   font-size: 1rem;
   font-weight: 500;
+  @media (max-width: 450px) {
+    font-size:0.6rem;
+  }
 `;
 
 const TotalScoreInput = styled.input`
@@ -91,6 +106,9 @@ const TotalScoreInput = styled.input`
   text-align: center;
   border: 1px solid ${colors.kStrokeColor};
   border-radius: 0.5rem;
+  @media (max-width: 450px) {
+    font-size:0.6rem;
+  }
 `;
 
 const ButtonContainer = styled.div`
@@ -107,6 +125,9 @@ const CancelButton = styled.button`
   font-weight: 500;
   font-size: 1rem;
   cursor: pointer;
+  @media (max-width: 450px) {
+    font-size:0.6rem;
+  }
 `;
 
 const AddGoalButton = styled.button`
@@ -119,6 +140,9 @@ const AddGoalButton = styled.button`
   font-weight: 500;
   font-size: 1rem;
   cursor: pointer;
+  @media (max-width: 450px) {
+    font-size:0.6rem;
+  }
 `;
 
 const questions = [
@@ -159,6 +183,7 @@ function AssessmentModal({ isOpen, onClose }) {
     return (
       <ModalOverlay>
         <ModalContainer>
+          <ScrollableContent>
           <Title>Anxiety Assessment GAD-7 Screening Tool</Title>
           <TableContainer>
             <StyledTable>
@@ -201,6 +226,7 @@ function AssessmentModal({ isOpen, onClose }) {
             <CancelButton onClick={onClose}>Cancel</CancelButton>
             <AddGoalButton onClick={onClose}>Save</AddGoalButton>
           </ButtonContainer>
+          </ScrollableContent>
         </ModalContainer>
       </ModalOverlay>
     );

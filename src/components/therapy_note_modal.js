@@ -26,6 +26,9 @@ const ModalContainer = styled.div`
   padding: 2rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   font-family: "Work Sans", sans-serif;
+  @media (max-width: 450px) {
+    width:70vw;
+  }
 `;
 
 const CloseButton = styled.button`
@@ -105,8 +108,16 @@ const RowContainer = styled.div`
   & > div {
     flex: 1;
   }
+    @media (max-width: 450px) {
+    flex-direction:column;
+  }
 `;
 
+const ScrollableContent = styled.div`
+  max-height: 60vh; /* Restrict the height of the scrollable area */
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding-right: 1rem; /* Optional padding for better scrolling experience */
+`;
 const TableContainer = styled.div`
   margin-top: 2rem;
   width: 100%;
@@ -304,6 +315,7 @@ function TherapyNotesModal({ isOpen, onClose }) {
   return (
     <ModalOverlay>
       <ModalContainer>
+        <ScrollableContent>
         <CloseButton onClick={onClose}>&times;</CloseButton>
         <AddButton onClick={handleOpenModal}>+</AddButton>
         <RowContainer>
@@ -407,7 +419,9 @@ function TherapyNotesModal({ isOpen, onClose }) {
         <InputField type="text" placeholder="" value={selectedNote.summary} />
         <Label>Notes</Label>
         <RichTextArea placeholder="" value={selectedNote.notes} />
-      </ModalContainer>
+      
+        </ScrollableContent>
+        </ModalContainer>
       <ModalComponent isOpen={isModalOpen} onClose={handleCloseModal} />
     </ModalOverlay>
   );

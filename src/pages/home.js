@@ -65,20 +65,9 @@ const DashboardWrapper = styled.div`
   gap: 2rem;
   padding: 1rem;
 
-  ${media.extraSmall`
-    flex-direction: column;
-    gap: 1rem;
-  `}
-
-  ${media.mobile`
-    flex-direction: column;
-    gap: 1rem;
-  `}
-
-   ${media.tablet`
-    flex-direction: column;
-    gap: 1rem;
-  `}
+  @media (max-width: 450px) {
+  flex-direction:column;
+  }
 `;
 
 const LeftColumn = styled.div`
@@ -128,26 +117,18 @@ const BannerImage = styled.img`
   height: auto;
   margin-right: 2rem;
 
-  ${media.extraSmall`
-    width: 6rem;
-    margin: 0 0 1rem 0;
-  `}
-
-  ${media.mobile`
-    width: 6rem;
-    margin: 0 0 1rem 0;
-  `}
-
-  ${media.tablet`
-    width: 8rem;
-    margin: 0 0 1.2rem 0;
-  `}
+  @media (max-width: 450px) {
+  width: 30%;
+  }
 `;
 
 const BannerText = styled.div`
   flex: 1;
   text-align: left;
   font-family: "Roboto", sans-serif;
+  @media (max-width: 450px) {
+  font-size: 0.6rem;
+  }
 `;
 
 const BannerTitle = styled.h2`
@@ -171,16 +152,9 @@ const BannerTitle = styled.h2`
 const BannerSubtitle = styled.p`
   font-size: 1.2rem;
 
-  ${media.extraSmall`
-    font-size: 0.9rem;
-  `}
-  ${media.mobile`
-    font-size: 0.9rem;
-  `}
-
-  ${media.tablet`
-    font-size: 1rem;
-  `}
+  @media (max-width: 450px) {
+  font-size: 0.8rem;
+  }
 `;
 
 const BoxRow = styled.div`
@@ -188,15 +162,14 @@ const BoxRow = styled.div`
   justify-content: space-between;
   margin-top: 2rem;
 
-  ${media.extraSmall`
-    flex-direction: column;
-    gap: 1rem;
-  `}
+  @media (max-width: 450px) {
+  flex-direction:column;
+  }
 `;
 
 const Box = styled.div`
   flex: 1;
-  margin: 0 0.5rem;
+  margin: 1 0.5rem;
   padding: 1rem;
   height: 20vh;
   background-color: ${(props) =>
@@ -205,21 +178,8 @@ const Box = styled.div`
   text-align: center;
   cursor: pointer;
   align-content: center;
-
-  &:first-child {
-    margin-left: 0;
-  }
-
-  &:last-child {
-    margin-right: 0;
-  }
-
-  ${media.extraSmall`
-    margin: 0 0.5rem;
-  `}
-  ${media.mobile`
-  margin: 0 0.5rem;
-  `}
+  margin:1rem;
+ 
 `;
 
 const BoxImage = styled.img`
@@ -238,7 +198,6 @@ const RightColumn = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
   height:100;
   background-color: ${colors.kWhiteColor};
   border-left: 1px solid ${colors.kStrokeColor1};
@@ -286,11 +245,10 @@ const ActivityBox = styled.div`
   display: flex;
   align-items: center;
   padding: 1rem;
-  margin-left: 1rem;
   border: 1px solid #ddd;
   border-radius: 1rem;
   margin-bottom: 1rem;
-  width: 100%;
+  width: 90%;
 
   ${media.mobile`
     flex-direction: row;

@@ -29,6 +29,9 @@ const ModalContainer = styled.div`
   padding: 2rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   font-family: "Work Sans", sans-serif;
+  @media (max-width: 450px) {
+    width:60vw;
+  }
 `;
 
 const CloseButton = styled.button`
@@ -101,20 +104,27 @@ const SliderValue = styled.div`
 `;
 const BannerText = styled.div`
   flex: 1;
-  padding: 1.5rem;
+  padding: 1rem;
   font-family: "Roboto", sans-serif;
 `;
 
 const BannerTitle = styled.p`
   font-size: 1.4rem;
-  margin: 0rem 0rem 0.5rem 0rem;
   font-weight: 500;
+  @media (max-width: 450px) {
+    font-size:0.9rem;
+  }
+  
 `;
 
 const BannerImage = styled.img`
   width: 9.9rem;
   height: auto;
   margin-top: 1rem;
+  @media (max-width: 450px) {
+    width:5rem;
+    margin-top:5rem;
+  }
 `;
 
 const ViewGoalsButton = styled.button`
@@ -122,16 +132,20 @@ const ViewGoalsButton = styled.button`
   color: white;
   border: none;
   border-radius: 0.5rem;
-  padding: 0.7rem 1.7rem;
   font-size: 1rem;
   font-weight: normal;
-  margin-top: 1rem;
+  margin-top: 0.2rem;
   cursor: pointer;
   font-family: "Roboto", sans-serif;
 
   &:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+    @media (max-width: 450px) {
+    width:30vw;
+    height:8vw;
+    font-size:0.7rem;
   }
 `;
 
@@ -140,16 +154,9 @@ const BannerSubtitle = styled.p`
   color: ${colors.kWhiteColor};
   margin: 0rem;
 
-  ${media.extraSmall`
-    font-size: 0.7rem;
-  `}
-  ${media.mobile`
-    font-size: 0.7rem;
-  `}
-
-  ${media.tablet`
-    font-size: 0.8rem;
-  `}
+  @media (max-width: 450px) {
+    font-size:0.8rem;
+  }
 `;
 
 const Heading = styled.p`
@@ -196,7 +203,7 @@ export const Deadline = styled.p`
   color: ${colors.kDarkPinkColor};
   font-weight: 600;
   font-size: 1rem;
-  margin-top: 0.5rem;
+  margin-top: 2rem;
 `;
 
 export const ButtonContainer = styled.div`

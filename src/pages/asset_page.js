@@ -52,7 +52,6 @@ const AssetDebtWrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-  gap: 2rem;
   padding: 1rem;
 
   ${media.extraSmall`
@@ -121,6 +120,10 @@ const IconContainer = styled.div`
   border-radius: 0.7rem;
   width: 3rem;
   height: 3rem;
+  @media (max-width: 300px) {
+    width:2rem;
+    height:2rem;
+  }
 `;
 
 const ItemText = styled.div`
@@ -131,7 +134,7 @@ const ItemText = styled.div`
   word-wrap: break-word;
   font-family: "Roboto", sans-serif;
   white-space: normal;
-  font-size: 0.9rem;
+  font-size: 0.6rem;
 `;
 
 const ActionContainer = styled.div`
@@ -154,6 +157,9 @@ const ActionCircle = styled.div`
   background-color: ${({ bgColor }) => bgColor};
   font-size: 10px;
   cursor: pointer;
+  @media (max-width: 300px) {
+    width:1.8rem;
+  }
 `;
 
 const Price = styled.p`
@@ -164,6 +170,9 @@ const Price = styled.p`
   align-items: center;
   margin-right: 0.4rem;
   font-family: "Roboto", sans-serif;
+  @media (max-width: 300px) {
+    font-size:0.8rem;
+  }
 `;
 
 const SummaryRow = styled.div`
@@ -173,11 +182,9 @@ const SummaryRow = styled.div`
   margin-bottom: 1rem;
   gap: 1rem;
   max-width: 40%;
-
-  ${media.extraSmall`
-    flex-direction: column;
-    gap: 1rem;
-  `}
+@media (max-width: 300px) {
+    flex-direction:column;
+  }
 `;
 
 const SummaryContainer = styled.div`
@@ -186,6 +193,9 @@ const SummaryContainer = styled.div`
   border-radius: 10px;
   padding: 1rem;
   color: ${colors.kWhiteColor};
+  @media (max-width: 300px) {
+    width:60vw;
+  }
 `;
 
 const SummaryValue = styled.h2`
@@ -216,6 +226,16 @@ const GrowthText = styled.span`
   font-family: "Work Sans", sans-serif;
 `;
 
+const ResponsiveSpan = styled.span`
+  @media (max-width: 300px) {
+    font-size:0.8rem;
+  }
+`;
+const ResponsiveSpan2 = styled.span`
+  @media (max-width: 300px) {
+    font-size:1.4rem;
+  }
+`;
 function AssetPage() {
   const assetList = [
     {
@@ -229,7 +249,7 @@ function AssetPage() {
     {
       category: "Investment",
       label: "Weacth Simple",
-      amount: 854000,
+      amount: 853000,
       growRate: 150,
       date: "12-01-2025",
       notes: "",
@@ -237,7 +257,7 @@ function AssetPage() {
     {
       category: "Cash",
       label: "Rbc Bank",
-      amount: 245000,
+      amount: 230000,
       growRate: 50,
       date: "01-12-2024",
       notes: "",
@@ -245,7 +265,7 @@ function AssetPage() {
     {
       category: "Vehicle",
       label: "Honda",
-      amount: 245000,
+      amount: 230000,
       growRate: 50,
       date: "26-12-2024",
       notes: "",
@@ -264,7 +284,7 @@ function AssetPage() {
     {
       category: "Credit Card",
       label: "Visa",
-      amount: 854000,
+      amount: 853000,
       growRate: 150,
       date: "12-01-2025",
       notes: "",
@@ -280,7 +300,7 @@ function AssetPage() {
     {
       category: "Credit Line",
       label: "Td Bank",
-      amount: 245000,
+      amount: 230000,
       growRate: 50,
       date: "20-12-2024",
       notes: "",
@@ -288,7 +308,7 @@ function AssetPage() {
     {
       category: "Vehicle Loan",
       label: "Honda",
-      amount: 145000,
+      amount: 130000,
       growRate: 50,
       date: "20-10-2024",
       notes: "",
@@ -312,11 +332,11 @@ function AssetPage() {
   return (
     <AssetDebtContainer>
       <MainContent>
-        <SidebarWrapper>
+        {/* <SidebarWrapper>
           <SideBar />
-        </SidebarWrapper>
+        </SidebarWrapper> */}
         <ContentWrapper>
-          <Header showChevronLeft={true} />
+          {/* <Header showChevronLeft={true} /> */}
           <AssetDebtWrapper>
             <SummaryRow>
               <SummaryContainer bgColor={colors.kPrimaryColor}>
@@ -365,13 +385,13 @@ function AssetPage() {
                             ? Cash
                             : Vehicle
                         }
-                        style={{ width: "1.5rem", height: "auto" }}
+                        style={{ width: "1rem", height: "auto" }}
                         alt="icon"
                       />
                     </IconContainer>
                     <ItemText>
-                      <strong>{asset.category}</strong>
-                      <span
+                      <ResponsiveSpan2>{asset.category}</ResponsiveSpan2>
+                      <ResponsiveSpan
                         style={{
                           fontFamily: "Roboto",
                           color: colors.kGrayColor,
@@ -379,7 +399,7 @@ function AssetPage() {
                         }}
                       >
                         {asset.label}
-                      </span>
+                      </ResponsiveSpan>
                     </ItemText>
                     <ActionContainer>
                       <Price>${asset.amount}</Price>
@@ -391,7 +411,7 @@ function AssetPage() {
                           src={EditIcon}
                           alt="edit"
                           style={{
-                            width: "1rem",
+                            width: "0.8rem",
                             height: "auto",
                           }}
                         />
@@ -405,7 +425,7 @@ function AssetPage() {
                           src={DeleteIcon}
                           alt="delete"
                           style={{
-                            width: "1rem",
+                            width: "0.8rem",
                             height: "auto",
                             filter: "invert(1)",
                           }}

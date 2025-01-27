@@ -29,6 +29,9 @@ const ModalContainer = styled.div`
   padding: 2rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   font-family: "Work Sans", sans-serif;
+  @media (max-width: 450px) {
+    width:60vw;
+  }
 `;
 
 const CloseButton = styled.button`
@@ -111,12 +114,19 @@ const BannerTitle = styled.p`
   font-size: 1.4rem;
   margin: 0rem 0rem 0.5rem 0rem;
   font-weight: 500;
+  @media (max-width: 450px) {
+    font-size:0.8rem;
+  }
 `;
 
 const BannerImage = styled.img`
   width: 7.9rem;
   height: auto;
   margin-top: 1rem;
+  @media (max-width: 450px) {
+    width:3rem;
+    margin-top:6.2rem;
+  }
 `;
 
 const ViewGoalsButton = styled.button`
@@ -135,6 +145,11 @@ const ViewGoalsButton = styled.button`
     transform: scale(1.05);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   }
+    @media (max-width: 450px) {
+    width:35vw;
+    font-size:0.6rem;
+    height:8vw;
+  }
 `;
 
 const BannerSubtitle = styled.p`
@@ -142,16 +157,9 @@ const BannerSubtitle = styled.p`
   color: ${colors.kWhiteColor};
   margin:0rem;
 
-  ${media.extraSmall`
-    font-size: 0.7rem;
-  `}
-  ${media.mobile`
-    font-size: 0.7rem;
-  `}
-
-  ${media.tablet`
-    font-size: 0.8rem;
-  `}
+  @media (max-width: 450px) {
+    font-size:0.8rem;
+  }
 `;
 
 const Heading = styled.p`

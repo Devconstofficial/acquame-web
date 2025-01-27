@@ -18,6 +18,12 @@ const ModalOverlay = styled.div`
   align-items: center;
   z-index: 1000;
 `;
+
+const ScrollableContent = styled.div`
+  max-height: 60vh; /* Restrict the height of the scrollable area */
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding-right: 1rem; /* Optional padding for better scrolling experience */
+`;
 const ModalContainer = styled.div`
   position: relative;
   background-color: white;
@@ -26,6 +32,9 @@ const ModalContainer = styled.div`
   padding: 2rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   font-family: "Work Sans", sans-serif;
+  @media (max-width: 450px) {
+    width:70vw;
+  }
 `;
 
 const CloseButton = styled.button`
@@ -104,6 +113,9 @@ const RowContainer = styled.div`
 
   & > div {
     flex: 1;
+  }
+    @media (max-width: 450px) {
+    flex-direction:column;
   }
 `;
 
@@ -234,6 +246,7 @@ function JournalModal({ isOpen, onClose }) {
     return (
       <ModalOverlay>
         <ModalContainer>
+          <ScrollableContent>
           <CloseButton onClick={onClose}>&times;</CloseButton>
           <AddButton onClick={handleOpenModal}>+</AddButton>
           <RowContainer>
@@ -340,7 +353,9 @@ function JournalModal({ isOpen, onClose }) {
             value={selectedNote.journal}
             readOnly
           />
-        </ModalContainer>
+  
+          </ScrollableContent>
+                </ModalContainer>
         <ModalComponent isOpen={isModalOpen} onClose={handleCloseModal} />
       </ModalOverlay>
     );

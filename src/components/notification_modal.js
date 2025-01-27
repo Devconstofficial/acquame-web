@@ -17,17 +17,9 @@ const ModalContainer = styled.div`
   width: 40vw;
   z-index: 1001;
 
-  ${media.extraSmall`
-    width: 80vw;
-  `}
-
-  ${media.mobile`
-    width: 70vw;
-  `}
-
-  ${media.tablet`
-    width: 50vw;
-  `}
+ @media (max-width: 450px) {
+    width:60vw;
+  }
 `;
 
 const ModalTitle = styled.p`

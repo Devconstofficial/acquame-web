@@ -58,7 +58,7 @@ const MentalWrapper = styled.div`
 `;
 
 const LeftColumn = styled.div`
-  flex: 3;
+  flex: 1;
 `;
 
 const ButtonContainer = styled.div`
@@ -107,21 +107,9 @@ const Banner = styled.div`
   color: white;
   margin-top: 2rem;
 
-  ${media.extraSmall`
-    flex-direction: column;
-    height: auto;
-    text-align: start;
-  `}
-
-  ${media.mobile`
-    height: auto;
-    text-align: start;
-  `}
-
-  ${media.tablet`
-    height: auto;
-    text-align: start;
-  `}
+  @media (max-width: 450px) {
+    width:55vw;
+  }
 `;
 
 const BannerImage = styled.img`
@@ -129,20 +117,11 @@ const BannerImage = styled.img`
   height: auto;
   margin-right: 2rem;
 
-  ${media.extraSmall`
-    width: 6rem;
-    margin: 0 0 1rem 0;
-  `}
-
-  ${media.mobile`
-    width: 6rem;
-    margin: 0 0 1rem 0;
-  `}
-
-  ${media.tablet`
-    width: 8rem;
-    margin: 0 0 1.2rem 0;
-  `}
+  @media (max-width: 450px) {
+  margin-top:3rem;  
+  margin-right:0.5rem;
+  width:8rem;
+  }
 `;
 
 const BannerText = styled.div`
@@ -150,6 +129,9 @@ const BannerText = styled.div`
   text-align: left;
   margin-bottom: 2rem;
   font-family: "Roboto", sans-serif;
+  @media (max-width: 450px) {
+    flex-direction:column;
+  }
 `;
 
 const BannerTitle = styled.h2`
@@ -157,17 +139,9 @@ const BannerTitle = styled.h2`
   margin-bottom: 0.5rem;
   font-weight: 600;
 
-  ${media.extraSmall`
-    font-size: 1.2rem;
-  `}
-
-  ${media.mobile`
-    font-size: 1.3rem;
-  `}
-
-   ${media.tablet`
-    font-size: 1.6rem;
-  `}
+  @media (max-width: 450px) {
+    font-size:0.8rem;
+  }
 `;
 
 const BannerSubtitle = styled.p`
@@ -221,6 +195,10 @@ const ProfileImageStyled = styled.img`
   height: 8rem;
   border-radius: 50%;
   object-fit: cover;
+  @media (max-width: 450px) {
+    width:6rem;
+    height:6rem;
+  }
 `;
 
 const CameraIconStyled = styled.img`
@@ -270,6 +248,10 @@ const DetailItem = styled.div`
   border: 0.1rem solid ${colors.kStrokeColor};
   padding: 1rem;
   border-radius: 0.5rem;
+  @media (max-width: 450px) {
+    width:58vw;
+  }
+  
 `;
 
 const DetailLeft = styled.div`
@@ -286,11 +268,18 @@ const IconContainer = styled.div`
   border-radius: 0.7rem;
   width: 4rem;
   height: 4rem;
+  @media (max-width: 450px) {
+    width:2rem;
+    height:2rem;
+  }
 `;
 
 const DetailIcon = styled.img`
   width: 2rem;
   height: auto;
+  @media (max-width: 450px) {
+    width:1rem;
+  }
 `;
 
 const DetailText = styled.p`
@@ -298,6 +287,9 @@ const DetailText = styled.p`
   padding: 0rem;
   margin: 0rem 0rem 0.3rem 0rem;
   color: ${colors.kBlackColor};
+  @media (max-width: 450px) {
+    font-size:0.8rem;
+  }
 `;
 const DetailText1 = styled.p`
   font-size: 0.7rem;
@@ -315,11 +307,19 @@ const EditIconContainer = styled.div`
   width: 2rem;
   height: 2rem;
   cursor: pointer;
+  @media (max-width: 450px) {
+    width:1.5rem;
+    height:1.5rem;
+  }
 `;
 
 const EditIconStyled = styled.img`
   width: 1rem;
   height: 1rem;
+  @media (max-width: 450px) {
+    width:0.7rem;
+    height:0.7rem;
+  }
 `;
 
 const ItemText = styled.div`
@@ -386,7 +386,6 @@ function ProfilePage() {
                             style={{
                               color: colors.kWhiteColor,
                               filter: "invert(1)",
-                              width: "2rem",
                             }}
                           />
                         </IconContainer>

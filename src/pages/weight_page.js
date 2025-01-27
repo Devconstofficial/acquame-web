@@ -33,10 +33,6 @@ const MainContent = styled.div`
   background-color: ${colors.kWhiteColor};
 `;
 
-const SidebarWrapper = styled.div`
-  flex: 0 0 15vw;
-  background-color: ${colors.kPrimaryColor};
-`;
 
 const ContentWrapper = styled.div`
   flex: 1;
@@ -58,6 +54,9 @@ const MetricContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
+  @media (max-width: 450px) {
+  flex-direction:column;
+  }
 `;
 
 const MetricBox = styled.div`
@@ -67,7 +66,10 @@ const MetricBox = styled.div`
   padding: 1.5rem;
   position: relative;
   cursor: pointer;
-  max-width: 20%;
+  @media (max-width: 450px) {
+  width:55vw;
+  }
+  
 `;
 
 const MetricTitle = styled.p`
@@ -267,6 +269,10 @@ const ViewGoalsButton = styled.button`
     transform: scale(1.05);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   }
+    @media (max-width: 450px) {
+    width:40vw;
+    font-size:1rem;
+  }
 `;
 function WeightPage() {
   const [unit, setUnit] = useState("Kg");
@@ -447,11 +453,11 @@ function WeightPage() {
   return (
     <WeightContainer>
       <MainContent>
-        <SidebarWrapper>
+        {/* <SidebarWrapper>
           <SideBar />
-        </SidebarWrapper>
+        </SidebarWrapper> */}
         <ContentWrapper>
-        <Header showChevronLeft={true} />
+        {/* <Header showChevronLeft={true} /> */}
           <WeightWrapper>
             <MetricContainer>
               <MetricBox color={colors.kPurpleShade2}>

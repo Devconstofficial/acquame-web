@@ -20,11 +20,13 @@ const ModalContainer = styled.div`
   position: relative;
   background-color: white;
   width: 30vw;
-  min-width: 400px;
   border-radius: 0.5rem;
   padding: 2rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   font-family: "Work Sans", sans-serif;
+  @media (max-width: 450px) {
+    width:70vw;
+  }
 `;
 
 const CloseButton = styled.button`

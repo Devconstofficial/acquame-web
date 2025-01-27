@@ -20,7 +20,7 @@ const Layout = () => {
           position: "fixed",
           top: 0,
           left: 0,
-          width: isCollapsed ? "60px" : "15%", // Adjust width based on collapse state
+          width: isCollapsed ? "60px" : "45%", // Adjust width based on collapse state
           height: "100vh", // Full height of the viewport
           zIndex: 100,
           transition: "width 0.3s ease", // Smooth transition for sidebar collapse
@@ -59,7 +59,7 @@ const Layout = () => {
             height: "calc(100vh - 60px)", // Remaining height after the header
             overflowY: "auto", // Enable vertical scrolling
             overflowX: "hidden", // Prevent horizontal scrolling
-            padding: "20px", // Add padding for content
+            paddingLeft: "20px", // Add padding for content
           }}
         >
           <Outlet /> {/* Render child routes dynamically */}

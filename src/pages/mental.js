@@ -59,6 +59,10 @@ const BannerImage = styled.img`
   width: 13rem;
   height: auto;
   margin-top: 3.8rem;
+  @media (max-width: 450px) {
+  width: 11rem;
+  display:none
+  }
 `;
 
 const UserInfo = styled.div`
@@ -121,6 +125,9 @@ const Box = styled.div`
   flex:1;
   width: 60%; /* Adjust for mobile */
   }
+  @media (max-width: 450px) {
+  width: 95%;
+  }
 `;
 
 
@@ -162,6 +169,9 @@ const RightColumn = styled.div`
   max-width:17vw;
   background-color: ${colors.kWhiteColor};
   border-left: 1px solid ${colors.kStrokeColor1};
+  @media (max-width: 450px) {
+  display:none
+  }
 `;
 
 const UserName = styled.h3`
@@ -184,13 +194,20 @@ const Banner = styled.div`
   background-color: ${colors.kPrimaryColor};
   border-radius: 1rem;
   color: white;
-  max-height: 26vh;
+  @media (max-width: 450px) {
+  width: 15rem;
+  font-size: 0.6rem;
+  }
+  
 `;
 
 const BannerTitle = styled.h2`
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
   font-weight: 600;
+  @media (max-width: 450px) {
+  font-size: 0.9rem;
+  }
 `;
 
 const ViewGoalsButton = styled.button`
@@ -217,6 +234,12 @@ const IconRow = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 1rem;
+  @media (max-width: 450px) {
+  width: 90%;
+  font-size: 0.6rem;
+  margin-top:0.2rem;
+  flex-direction:column;
+  }
   
 `;
 
@@ -229,6 +252,9 @@ const IconItem = styled.div`
 const IconImage = styled.img`
   width: 2rem;
   height: auto;
+  @media (max-width: 450px) {
+  width: 0.8rem;
+  }
 `;
 
 const IconTitlecontainer = styled.div`
@@ -461,7 +487,7 @@ function MentalPage() {
                   marginLeft: "21vw",
                 }}
               > */}
-                <Box style={{width: window.innerWidth <= 786 ? '48%' : 270, height:100,marginTop:10,}} bgColor={colors.kPrimaryColor}>
+                <Box style={{width: window.innerWidth <= 786 ? '75%' : 270, height:100,marginTop:10,}} bgColor={colors.kPrimaryColor}>
                   <BoxImage src={Other} alt="Therapy" />
                   <BoxText>Other Resources</BoxText>
                 </Box>
